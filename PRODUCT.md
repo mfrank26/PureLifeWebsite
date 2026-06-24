@@ -245,6 +245,195 @@ Seniors and their families make high-stakes decisions with deep personal impact.
 
 ---
 
+## Knowledge Center
+
+The Knowledge Center is not a blog. It is a permanent, evergreen educational platform — the most comprehensive free resource for Medicare, life insurance, and government benefits in our target markets. It is a core pillar of the website, equal in strategic importance to the services pages.
+
+### Strategic Purpose
+
+1. **SEO Authority** — Build topical authority across every Medicare, life insurance, and benefits keyword cluster. Google rewards depth and comprehensiveness. A well-structured Knowledge Center with hundreds of interlinked articles becomes near-impossible to outrank.
+2. **Trust at the Top of the Funnel** — Visitors who don't know us yet need to trust us before they'll call. Providing genuinely useful education — for free, with no pressure — is the fastest way to earn that trust.
+3. **Lead Capture at Every Article** — Every resource page includes contextual CTAs, downloadable lead magnets, and inline quote prompts tuned to the article's topic. A visitor reading about Medicare Advantage sees a "Compare Medicare Advantage Plans in Your Area" CTA — not a generic "Get a Quote."
+4. **Long-Term Compounding Asset** — Paid ads stop the moment you stop paying. Content compounds. Articles published today will generate leads for years.
+5. **Competitive Moat** — Most local insurance agencies publish nothing or publish shallow posts. A deep, well-organized Knowledge Center becomes a durable competitive advantage that cannot be quickly copied.
+
+---
+
+### Content Categories
+
+#### 1. Medicare Hub
+The cornerstone category. Covers the full lifecycle from initial eligibility through annual plan changes.
+
+| Article / Guide | Primary Keyword Target | Content Depth |
+|---|---|---|
+| Turning 65 Medicare Guide | "turning 65 Medicare" | Pillar — comprehensive guide, 3,000+ words |
+| Medicare Basics | "how does Medicare work" | Pillar — overview of all parts |
+| Medicare Part A | "Medicare Part A" | Deep-dive — hospital coverage explained |
+| Medicare Part B | "Medicare Part B" | Deep-dive — medical coverage, costs |
+| Medicare Part C (Advantage) | "Medicare Advantage plans" | Pillar |
+| Medicare Part D | "Medicare prescription drug plans" | Pillar |
+| Medicare Supplement (Medigap) | "Medicare Supplement plans" | Pillar |
+| Annual Enrollment Period (AEP) | "Medicare Annual Enrollment Period" | Pillar — published/updated each September |
+| Open Enrollment Period | "Medicare Open Enrollment" | Guide |
+| Special Enrollment Periods | "Medicare Special Enrollment Period" | Guide — covers qualifying life events |
+| Medicare and Medicaid (Dual Eligible) | "Medicare and Medicaid together" | Guide |
+| Medicare Savings Programs | "help paying Medicare costs" | Guide |
+| Medicare Advantage vs. Supplement | "Medicare Advantage vs Supplement" | Comparison |
+| Best Medicare Plans by State | "[state] Medicare plans [year]" | Per-state landing pages (future) |
+
+#### 2. Life Insurance Hub
+
+| Article / Guide | Primary Keyword Target |
+|---|---|
+| Life Insurance Basics | "how does life insurance work" |
+| Term vs. Whole Life | "term vs whole life insurance" |
+| Final Expense Insurance | "final expense insurance" |
+| Burial Insurance | "burial insurance" |
+| Mortgage Protection Insurance | "mortgage protection insurance" |
+| Life Insurance for Seniors | "life insurance for seniors over 65" |
+| Guaranteed Issue Life Insurance | "guaranteed issue life insurance" |
+| How Much Life Insurance Do I Need? | "how much life insurance do I need" |
+| Life Insurance Without a Medical Exam | "no exam life insurance" |
+
+#### 3. Government Benefits Hub
+A high-traffic, underserved category. Most insurance sites ignore government benefits. Our clients often qualify and don't know it — helping them find money makes us indispensable.
+
+| Article / Guide | Primary Keyword Target |
+|---|---|
+| SNAP (Food Stamps) Guide | "how to apply for SNAP" |
+| Free Government Phone Programs | "free government phone program" / "Lifeline program" |
+| Low Income Subsidy (Extra Help) | "Medicare Extra Help program" |
+| Medicare Savings Programs | "help with Medicare costs" |
+| Medicaid Eligibility Guide | "Medicaid eligibility" |
+| ACA Marketplace / Obamacare | "ACA marketplace plans" / "Obamacare plans" |
+| Social Security and Medicare | "when to sign up for Medicare Social Security" |
+| Veterans Benefits and Medicare | "VA benefits Medicare" |
+| State Pharmaceutical Assistance Programs | "[state] prescription assistance" |
+
+#### 4. Tools & Resources
+Interactive and downloadable assets that capture leads and provide immediate value.
+
+- **Medicare Checklist** — Downloadable PDF: "Everything you need to enroll in Medicare"
+- **Turning 65 Timeline** — Month-by-month guide for the year before Medicare eligibility
+- **AEP Checklist** — "Questions to ask before switching your Medicare plan" (PDF)
+- **Life Insurance Needs Calculator** — Interactive widget
+- **Plan Comparison Worksheet** — Downloadable PDF for comparing plan options
+- **Medicare Glossary** — A–Z definitions of Medicare and insurance terms (SEO goldmine)
+- **FAQ Library** — Structured Q&A content, FAQ schema markup on all entries
+
+#### 5. Video Learning Center
+Short, professional educational videos hosted on YouTube (linked from Knowledge Center).
+
+- "Medicare in 5 Minutes" — overview video
+- "Medicare Advantage vs. Supplement: Which is Right for You?"
+- "How to Read Your Medicare Summary Notice"
+- "What Happens If You Miss Your Medicare Enrollment Window?"
+- "Final Expense Insurance Explained Simply"
+- "5 Government Programs Seniors Often Miss"
+
+Videos embedded on relevant Knowledge Center pages + uploaded to YouTube for additional organic discovery. Transcripts published as article content.
+
+#### 6. Community Events
+Local trust-building and lead generation through in-person and virtual events.
+
+- Medicare 101 Seminars (in-person and virtual)
+- Annual Enrollment Period Q&A Webinars
+- Benefits Enrollment Assistance Events
+- Partnership events with senior centers, libraries, churches
+
+Event pages serve dual purpose: community engagement + local SEO signals.
+
+---
+
+### Content Architecture
+
+**URL Structure:**
+```
+/knowledge                         → Hub landing page (categorized directory)
+/knowledge/medicare                → Medicare category index
+/knowledge/medicare/basics         → Individual article
+/knowledge/medicare/turning-65     → Pillar guide
+/knowledge/life-insurance          → Life insurance category index
+/knowledge/life-insurance/final-expense → Article
+/knowledge/government-benefits     → Benefits category index
+/knowledge/tools                   → Tools & downloads landing
+/knowledge/glossary                → Insurance glossary
+/knowledge/faq                     → FAQ library
+/knowledge/videos                  → Video Learning Center
+/knowledge/events                  → Community events
+```
+
+**Article Template — Required Sections:**
+1. Hero header with article title, category tag, estimated read time, last-updated date
+2. Table of contents (anchor links, sticky on desktop)
+3. Body content (structured with H2/H3, short paragraphs, bullet lists, callout boxes)
+4. Callout box: contextual CTA tied to the article topic (form or phone)
+5. Related articles (3–4 internal links)
+6. FAQ section (minimum 5 Q&As, FAQ schema markup)
+7. Downloadable resource (PDF or checklist, where applicable)
+8. Bottom CTA: "Ready to find the right plan? Talk to a licensed agent."
+9. Author byline (licensed agent name + credentials)
+
+**Searchability:**
+- Full-text search on /knowledge (client-side or Algolia)
+- Filter by category
+- Filter by audience (seniors, families, caregivers)
+- Filter by content type (guide, checklist, video, FAQ)
+
+**Lead Capture Integration:**
+- Downloadable resources gate behind email capture (name + email) → syncs to CRM
+- Inline "Get a free consultation" forms mid-article for high-intent topics
+- Exit-intent modal on long-form articles: "Before you go — talk to a licensed agent for free"
+
+---
+
+### Content Publishing Roadmap
+
+**Phase 1 — Launch (Months 1–2)**
+Publish the 10 highest-traffic, highest-intent articles to establish topical authority before launch:
+1. Turning 65 Medicare Guide
+2. Medicare Basics
+3. Medicare Advantage Plans Explained
+4. Medicare Supplement Plans Explained
+5. Annual Enrollment Period Guide
+6. Medicare Part D Guide
+7. Final Expense Insurance
+8. SNAP Benefits Guide
+9. Free Government Phone Programs
+10. Medicare Glossary
+
+**Phase 2 — Expansion (Months 3–6)**
+- Complete all Medicare Hub articles
+- Complete Life Insurance Hub
+- Launch Tools & Downloads section
+- Publish 2–4 new articles per month
+
+**Phase 3 — Authority (Months 7–12)**
+- State-specific Medicare plan comparison pages
+- Video Learning Center launch (YouTube + embedded)
+- Community Events calendar
+- Begin backlinking / PR outreach for high-authority links
+
+**Phase 4 — Scale (Year 2+)**
+- AEP content surge each fall (September–December)
+- Guest contributions from licensed agents
+- Multimedia expansion (podcasts, webinars)
+- Consider structured data for "featured snippet" targeting on FAQ content
+
+---
+
+### Technical Requirements
+
+- **CMS:** Markdown files in `/content/knowledge/` directory, rendered via Next.js App Router. No external CMS dependency for launch; evaluate Contentful or Sanity for Phase 2+.
+- **Search:** Static full-text search at launch (Fuse.js); upgrade to Algolia when content exceeds 100 articles.
+- **Schema Markup:** Article, FAQPage, HowTo, and BreadcrumbList schema on all Knowledge Center pages.
+- **Sitemaps:** All Knowledge Center URLs included in sitemap.xml, separated into `/sitemap-knowledge.xml` for Google Search Console monitoring.
+- **Images:** Every article has an OG image generated with consistent branding. Alt text required on all images.
+- **Performance:** All Knowledge Center pages target Lighthouse score ≥ 90. No client-side rendering for article content — fully static or SSG.
+- **Internal Linking:** Every services page links to relevant Knowledge Center articles and vice versa. This is the backbone of the SEO strategy.
+
+---
+
 ## Conversion Philosophy
 
 Every page exists to move a visitor one step closer to a conversation with a licensed agent. We do not try to close insurance online — we close the gap between confusion and a trusted expert.
