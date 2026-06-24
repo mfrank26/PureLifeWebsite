@@ -245,6 +245,180 @@ Seniors and their families make high-stakes decisions with deep personal impact.
 
 ---
 
+## AI Knowledge Assistant
+
+The AI Knowledge Assistant is a Claude-powered chat agent embedded throughout the Knowledge Center. It answers visitor questions about Medicare, life insurance, ACA, Medicaid, and government benefits using only approved Pure Life educational content. It does not give personalized plan recommendations — that is the licensed agent's role. Its job is to educate, build confidence, and connect the right visitors to the right next step.
+
+This is not a generic chatbot. It is a subject matter expert that happens to be available 24/7.
+
+---
+
+### Strategic Purpose
+
+1. **Convert passive readers into active conversations.** A visitor reading about Medicare Supplement plans has a question that the article doesn't answer. Instead of leaving, they ask the assistant. The conversation replaces the bounce.
+2. **Qualify and warm leads before agent handoff.** The assistant understands the visitor's situation — age, coverage type, current plan, concern — before transferring. The agent receives a warm, contextualized lead, not a cold form submission.
+3. **24/7 availability.** Most Medicare decisions happen in the evening and on weekends. Agents are not available then. The assistant is always on.
+4. **Scale education without scaling headcount.** Answering "What is the difference between Medicare Advantage and Medicare Supplement?" a thousand times per day is not a job for a licensed agent. It is a job for AI.
+5. **Conversation data as a product.** Every conversation is a window into what visitors don't understand, what fears they have, and what plan types they're considering. This data informs content strategy, product decisions, and sales training.
+
+---
+
+### Scope and Knowledge Boundaries
+
+The assistant is grounded exclusively in Pure Life's approved content library. It cannot speculate, cannot recommend specific plans, and cannot impersonate a licensed agent.
+
+**The assistant CAN:**
+- Explain how Medicare Parts A, B, C, and D work
+- Describe plan types (Advantage, Supplement, Part D) in general terms
+- Explain enrollment windows, deadlines, and penalties
+- Define insurance terms from the Knowledge Center Glossary
+- Describe ACA Marketplace eligibility and subsidy basics
+- Explain Medicaid eligibility criteria in general terms
+- List government benefits programs and explain how to apply
+- Explain what final expense and life insurance products cover in general
+- Answer FAQ content from the Knowledge Center
+- Tell visitors what questions to ask a licensed agent
+- Initiate handoff to a licensed agent at any point
+
+**The assistant CANNOT:**
+- Recommend a specific plan or carrier
+- Quote premiums or give pricing as advice
+- Compare specific plan costs for a specific person
+- Advise on medical or health decisions
+- Imply it is a licensed insurance agent
+- Access live carrier plan data or formularies
+- Process enrollments or applications
+
+Every session begins with a clear, friendly disclosure:  
+*"I'm Pure Life's educational assistant. I can help you understand your Medicare and insurance options. For personalized plan recommendations, I'll connect you with one of our licensed agents."*
+
+---
+
+### Handoff Triggers
+
+The assistant actively monitors the conversation for signals that a licensed agent should be involved. When a trigger is detected, it offers a warm transition — never an abrupt redirect.
+
+| Trigger Signal | Handoff Message |
+|---|---|
+| "Which plan should I choose?" | "That's exactly what our licensed agents help with. They'll compare your options side by side at no cost. Want me to connect you now?" |
+| "How much will it cost me?" | "Pricing depends on your zip code, age, and current coverage. An agent can give you exact numbers in minutes." |
+| "I'm ready to enroll" | "Great — I'll connect you with a licensed agent who can walk you through enrollment right now." |
+| Expresses frustration or confusion | "Let me get a licensed agent on the line who can help you directly." |
+| Age + coverage type both known | Proactively offer: "Based on what you've shared, an agent can show you plans available in your area." |
+| After 3 exchanges without resolution | "I want to make sure you get the right answer. Can I connect you with one of our licensed agents?" |
+| User asks to speak to a person | Immediate: name, phone number, and/or form |
+
+**Handoff options presented:**
+1. **Chat transfer** — Live agent joins the conversation (when agents are available)
+2. **Phone call** — "Click to call" or "Request a callback in 30 seconds"
+3. **Lead form** — Name, phone, zip — triggers the AI caller flow (Twilio + OpenAI Realtime)
+
+---
+
+### Technical Architecture
+
+**Model:** Claude (`claude-sonnet-4-6` for production; upgrade path to Opus for complex queries)
+
+**Retrieval (RAG):**
+- Knowledge Center articles chunked and embedded at publish time
+- Vector store: pgvector in Supabase (existing infrastructure)
+- At query time: embed the user message → retrieve top-k relevant chunks → inject as context
+- Source citation: every answer includes "Source: [Article Name]" with a link, so visitors can read further
+
+**System Prompt Principles:**
+- Identity: "You are the Pure Life Insurance educational assistant."
+- Scope: "Answer only from the provided context. If the answer is not in the context, say so and offer to connect the user with a licensed agent."
+- Tone: Warm, clear, never condescending. Write for someone who may be 65+ and new to Medicare.
+- Compliance: "Never recommend specific plans, quote prices, or imply you are a licensed agent."
+- Handoff: "When the user needs personalized advice, offer a licensed agent connection."
+
+**Session & Conversation Logging:**
+Every conversation is stored in Supabase with the following schema:
+
+```
+conversation_sessions
+  id (uuid)
+  session_id (uuid)
+  visitor_id (uuid, anonymous or authenticated)
+  started_at (timestamp)
+  ended_at (timestamp)
+  page_url (text) — where the conversation started
+  handoff_triggered (boolean)
+  handoff_type (enum: chat, phone, form, none)
+  lead_captured (boolean)
+  lead_id (uuid, FK to leads table)
+  topic_tags (text[]) — auto-tagged: medicare, life_insurance, aca, medicaid, benefits
+
+conversation_messages
+  id (uuid)
+  session_id (uuid, FK)
+  role (enum: user, assistant)
+  content (text)
+  created_at (timestamp)
+  sources_cited (text[]) — Knowledge Center article slugs used
+  handoff_offered (boolean)
+```
+
+**CRM Integration (Phase 2):**
+- When a handoff form is submitted, the conversation summary is attached to the CRM lead record
+- Agent sees: visitor's questions, topics discussed, confusion points, before the first call
+- GoHighLevel or HubSpot note auto-populated with conversation context
+
+**n8n Integration:**
+- Handoff form submission → n8n webhook → SMS confirmation + AI caller flow (existing pipeline)
+- Conversation summary → CRM lead note
+- High-intent conversations flagged for immediate agent notification (Slack or SMS to agent)
+
+---
+
+### UI Placement and Behavior
+
+**Placement:**
+- Floating chat button: bottom-right corner on all `/knowledge/*` pages
+- Inline contextual prompt: mid-article "Have a question about [article topic]?" prompt box
+- Knowledge Center homepage: featured assistant card above the fold
+- FAQ pages: assistant offered as alternative to browsing ("Ask a question instead")
+
+**Widget Design (from DESIGN.md tokens):**
+- Closed state: Emerald FAB (floating action button), 56px, subtle pulse animation on first visit
+- Open state: 380px × 560px panel, navy-900 background, glass border
+- Header: Pure Life logo mark + "Knowledge Assistant" + online indicator (green dot)
+- Messages: User bubbles right-aligned (navy-700), assistant bubbles left-aligned (navy-800)
+- Sources: Inline citation chips below assistant messages, silver styling, link to article
+- Handoff CTA: Emerald button, full-width, appears when handoff is triggered
+- Mobile: Full-screen overlay on screens < 768px
+
+**Disclosure banner** (always visible in chat header):
+*"Educational assistant · Not a licensed agent · For plan advice, talk to our team"*
+
+---
+
+### Compliance and Guardrails
+
+Insurance is a regulated industry. The AI assistant must never cross the line from education into advice.
+
+- **No plan recommendations.** The assistant describes plan types, not specific plans.
+- **No pricing.** Premiums vary by location, age, and health. The assistant explains this and routes to an agent.
+- **Clear identity disclosure.** The assistant identifies itself as an AI in every opening message.
+- **CMS compliance language.** Where Medicare content is discussed, appropriate disclaimers are included (e.g., "Plans vary by location. Not all plans are available in all areas.").
+- **Audit trail.** All conversations are logged. Compliance review can audit any interaction.
+- **Escalation always available.** The user can reach a human at any point — the handoff offer is never buried.
+
+---
+
+### Success Metrics
+
+| Metric | Target |
+|---|---|
+| Conversation start rate (visitors who open chat) | ≥ 8% of Knowledge Center visitors |
+| Handoff rate (conversations that offer agent transfer) | ≥ 25% |
+| Lead capture rate (handoffs that submit form or request call) | ≥ 30% of handoffs |
+| Answer quality (thumbs up / no negative feedback) | ≥ 85% |
+| Avg. messages per session | 4–8 (engaged, not abandoned) |
+| Conversations logged to CRM (Phase 2) | 100% |
+
+---
+
 ## Knowledge Center
 
 The Knowledge Center is not a blog. It is a permanent, evergreen educational platform — the most comprehensive free resource for Medicare, life insurance, and government benefits in our target markets. It is a core pillar of the website, equal in strategic importance to the services pages.
