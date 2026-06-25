@@ -471,13 +471,13 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0" aria-label="Pure Life Insurance Services — home">
             <Image
-              src="/images/pure-life-logo.png"
+              src="/images/pure-life-logo-horizontal.png"
               alt="Pure Life Insurance Services LLC"
-              width={47}
-              height={48}
+              width={160}
+              height={90}
               priority
               className="object-contain"
-              style={{ height: "48px", width: "auto" }}
+              style={{ height: "44px", width: "auto" }}
             />
           </Link>
 
