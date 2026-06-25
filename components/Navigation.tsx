@@ -454,15 +454,13 @@ export function Navigation() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled ? "rgba(10,20,40,0.92)" : "rgba(4,16,31,0.30)",
-          backdropFilter: "blur(18px) saturate(180%)",
-          WebkitBackdropFilter: "blur(18px) saturate(180%)",
-          borderBottom: scrolled
-            ? "1px solid rgba(255,255,255,0.10)"
-            : "1px solid rgba(255,255,255,0.07)",
+          background: scrolled ? "rgba(10,20,40,0.82)" : "rgba(4,16,31,0.20)",
+          backdropFilter: "blur(28px) saturate(200%)",
+          WebkitBackdropFilter: "blur(28px) saturate(200%)",
+          borderBottom: "none",
           boxShadow: scrolled
-            ? "0 4px 32px rgba(4,16,31,0.55)"
-            : "0 2px 16px rgba(4,16,31,0.30)",
+            ? "0 4px 32px rgba(4,16,31,0.50)"
+            : "0 1px 20px rgba(4,16,31,0.20)",
         }}
       >
         <nav

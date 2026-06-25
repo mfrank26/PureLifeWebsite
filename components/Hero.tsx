@@ -29,14 +29,14 @@ function TrustCard({ reduced }: { reduced: boolean }) {
   return (
     <motion.div
       style={{
-        background: "rgba(255,255,255,0.93)",
-        backdropFilter: "blur(20px) saturate(180%)",
-        WebkitBackdropFilter: "blur(20px) saturate(180%)",
-        border: "1px solid rgba(255,255,255,0.65)",
-        borderRadius: "16px",
-        padding: "16px 20px",
-        boxShadow: "0 8px 32px rgba(4,16,31,0.20), 0 2px 8px rgba(4,16,31,0.10)",
-        minWidth: "210px",
+        background: "rgba(4,16,31,0.60)",
+        backdropFilter: "blur(24px) saturate(180%)",
+        WebkitBackdropFilter: "blur(24px) saturate(180%)",
+        border: "1px solid rgba(255,255,255,0.12)",
+        borderRadius: "14px",
+        padding: "14px 18px",
+        boxShadow: "0 8px 32px rgba(4,16,31,0.40), 0 2px 8px rgba(4,16,31,0.25)",
+        minWidth: "190px",
       }}
       initial={reduced ? false : { opacity: 0, y: 18, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -45,19 +45,19 @@ function TrustCard({ reduced }: { reduced: boolean }) {
         : { type: "spring", stiffness: 300, damping: 28, delay: 1.8 }
       }
     >
-      <div className="flex gap-px mb-2" aria-label="5 stars">
+      <div className="flex gap-px mb-1.5" aria-label="5 stars">
         {[...Array(5)].map((_, i) => (
-          <span key={i} style={{ color: "#F59E0B", fontSize: "13px", lineHeight: 1 }}>★</span>
+          <span key={i} style={{ color: "#F59E0B", fontSize: "12px", lineHeight: 1 }}>★</span>
         ))}
       </div>
-      <p style={{ fontFamily: "var(--font-ui)", fontWeight: 700, fontSize: "13px", lineHeight: 1.25, color: "#0A1628", marginBottom: "2px" }}>
+      <p style={{ fontFamily: "var(--font-ui)", fontWeight: 700, fontSize: "12px", lineHeight: 1.25, color: "#FFFFFF", marginBottom: "2px" }}>
         Trusted by 1,200+ Families
       </p>
-      <p style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "#64748B", lineHeight: 1.3, marginBottom: "10px" }}>
+      <p style={{ fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(184,196,206,0.80)", lineHeight: 1.3, marginBottom: "9px" }}>
         Licensed Medicare Advisors
       </p>
-      <div style={{ borderTop: "1px solid rgba(10,22,40,0.07)", paddingTop: "10px" }}>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "11px", fontWeight: 600, color: "#059669", display: "flex", alignItems: "center", gap: "5px" }}>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.10)", paddingTop: "9px" }}>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "11px", fontWeight: 600, color: "#34D399", display: "flex", alignItems: "center", gap: "5px" }}>
           <span style={{ fontSize: "12px" }}>✓</span>
           No Cost Consultation
         </p>
@@ -116,7 +116,7 @@ export function Hero() {
               poster="/videos/PureLifeHeroPoster.jpg"
               src="/videos/PureLifeHeroVideo.mp4"
               className="w-full h-full object-cover block"
-              style={{ objectPosition: "center 40%" }}
+              style={{ objectPosition: "center 40%", filter: "brightness(1.08) contrast(1.05)" }}
             />
           </motion.div>
         </div>
@@ -126,27 +126,27 @@ export function Hero() {
           {/* Mobile: flat dark overlay */}
           <div
             className="absolute inset-0 lg:hidden"
-            style={{ background: "rgba(4,16,31,0.52)" }}
+            style={{ background: "rgba(4,16,31,0.39)" }}
           />
           {/* Desktop: left panel scrim, fades quickly past the panel edge (~42%) */}
           <div
             className="absolute inset-0 hidden lg:block"
-            style={{ background: "linear-gradient(to right, rgba(4,16,31,0.86) 0%, rgba(4,16,31,0.55) 30%, rgba(4,16,31,0.18) 48%, rgba(4,16,31,0.03) 70%, transparent 100%)" }}
+            style={{ background: "linear-gradient(to right, rgba(4,16,31,0.65) 0%, rgba(4,16,31,0.41) 30%, rgba(4,16,31,0.14) 48%, rgba(4,16,31,0.02) 70%, transparent 100%)" }}
           />
           {/* Top vignette — nav area */}
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(4,16,31,0.55) 0%, transparent 26%)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(4,16,31,0.41) 0%, transparent 26%)" }}
           />
           {/* Bottom vignette */}
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to top, rgba(4,16,31,0.65) 0%, transparent 52%)" }}
+            style={{ background: "linear-gradient(to top, rgba(4,16,31,0.49) 0%, transparent 52%)" }}
           />
           {/* Soft radial edge vignette — cinematic focus on the centre */}
           <div
             className="absolute inset-0"
-            style={{ background: "radial-gradient(ellipse 80% 85% at 58% 46%, transparent 38%, rgba(4,16,31,0.50) 100%)" }}
+            style={{ background: "radial-gradient(ellipse 80% 85% at 58% 46%, transparent 38%, rgba(4,16,31,0.38) 100%)" }}
           />
         </div>
 
@@ -154,14 +154,14 @@ export function Hero() {
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 3 }} aria-hidden="true">
           <div style={{
             position: "absolute", inset: 0,
-            background: "radial-gradient(ellipse 55% 65% at 18% 50%, rgba(4,16,31,0.30) 0%, transparent 72%)",
+            background: "radial-gradient(ellipse 55% 65% at 18% 50%, rgba(4,16,31,0.22) 0%, transparent 72%)",
           }} />
         </div>
 
         {/* ── 4. CONTENT — glass panel floats over the video ── */}
         <div
-          className="absolute inset-0 z-20 flex flex-col justify-center px-5 sm:px-8 lg:px-12 xl:px-16"
-          style={{ paddingTop: "96px", paddingBottom: "64px" }}
+          className="absolute inset-0 z-20 flex flex-col justify-center px-5 sm:px-8 lg:px-20 xl:px-28"
+          style={{ paddingTop: "110px", paddingBottom: "64px" }}
         >
           {/* Copy panel — constrained left on desktop, full-width on mobile */}
           <div className="w-full lg:w-auto lg:max-w-[min(480px,40%)]">
@@ -210,7 +210,7 @@ export function Hero() {
 
               {/* Value proposition */}
               <motion.p
-                className="font-ui font-medium leading-relaxed mb-10 text-balance"
+                className="font-ui font-medium leading-relaxed mb-5 text-balance"
                 style={{
                   fontSize: "clamp(0.9375rem,1.4vw,1.0625rem)",
                   color: "rgba(184,196,206,0.92)",
@@ -222,10 +222,21 @@ export function Hero() {
                 Independent, licensed Medicare advisors who compare plans from 50+ insurance carriers across 15 states — at no cost to you.
               </motion.p>
 
+              {/* Trust statement */}
+              <motion.p
+                className="font-ui font-medium text-[13px] leading-relaxed mb-8"
+                style={{ color: "rgba(52,211,153,0.90)" }}
+                variants={fadeIn(0.66, 0.5)}
+                initial="hidden"
+                animate="visible"
+              >
+                ✓ Independent agency representing 50+ insurance carriers — not tied to any single insurance company.
+              </motion.p>
+
               {/* CTAs */}
               <motion.div
                 className="flex flex-col sm:flex-row gap-3 mb-10"
-                variants={fadeUp(0.74, 0.45)}
+                variants={fadeUp(0.82, 0.45)}
                 initial="hidden"
                 animate="visible"
               >
