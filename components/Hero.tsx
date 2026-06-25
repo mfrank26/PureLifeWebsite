@@ -246,16 +246,16 @@ export function Hero() {
 
               {/* CTAs */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-3 mb-10"
+                className="flex flex-col gap-3 mb-10"
                 variants={fadeUp(0.82, 0.45)}
                 initial="hidden"
                 animate="visible"
               >
-                <Link href="/quote/medicare" className="btn-emerald">
+                <Link href="/quote/medicare" className="btn-emerald w-full justify-center">
                   Get My Free Quote
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/medicare" className="btn-ghost-cyan">
+                <Link href="/medicare" className="btn-ghost-cyan w-full justify-center">
                   Explore Medicare Plans
                 </Link>
               </motion.div>
