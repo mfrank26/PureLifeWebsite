@@ -103,9 +103,20 @@ export function Hero() {
         >
           <motion.div
             className="w-full h-full"
-            initial={reduced ? {} : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.8, ease: "easeOut" }}
+            initial={reduced ? {} : { opacity: 0, scale: 1, x: 0 }}
+            animate={reduced
+              ? {}
+              : {
+                  opacity: 1,
+                  scale: [1, 1.03, 1],
+                  x: [0, 5, 0],
+                }
+            }
+            transition={reduced ? {} : {
+              opacity: { duration: 1.8, ease: "easeOut" },
+              scale: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 1.8, times: [0, 0.5, 1] },
+              x:     { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 1.8, times: [0, 0.5, 1] },
+            }}
           >
             <video
               autoPlay
