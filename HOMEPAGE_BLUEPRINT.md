@@ -1,52 +1,97 @@
 # Pure Life Insurance — Homepage Blueprint
+### Revised Edition
 
 > **Status: DESIGN ONLY — Awaiting approval before any code is written.**
-> **Role:** Creative Director · UX Lead · CRO Specialist · Senior Product Designer
+> **Roles:** Creative Director · UX Lead · CRO Specialist · Senior Product Designer
+
+---
+
+## Revisions Incorporated
+
+| Revision | Change |
+|---|---|
+| Hero | Visitor's problem first, not the company. New headline direction. Premium visual specification. |
+| Hero Design | Deep navy + silver wing gradients + cyan accent lighting + glass panels. No stock photography. |
+| Audience Selector | Expanded to 6 options. Interactive personalization described. Moved earlier. |
+| AI Assistant | Moved from Section 10 to Section 3 — immediately after Audience Selector. |
+| Independent Agency | New dedicated section added between Services and How It Works. |
+| Section Order | Agent Showcase moved before Testimonials. People trust people before they trust reviews. |
+| Emotional Arc | Updated to: Confusion → Relief → Understanding → Confidence → Trust → Action. |
+| Build Phases | Phase 1 scoped to: Navigation + Hero + Audience Selector + Credibility Bar only. |
 
 ---
 
 ## The Story the Homepage Tells
 
-A visitor arrives at purelifeis.com carrying something invisible: anxiety. They have been on Medicare.gov, they have read three blog posts that contradicted each other, they have watched a commercial from a national carrier that confused them further. They are 64, or they are the adult child of a 72-year-old who just got a plan change notice in the mail. Or they are 58, healthy, and quietly terrified of what happens when their employer coverage ends.
+The visitor does not arrive looking for an insurance company. They arrive carrying a problem.
 
-They do not arrive looking for a website. They arrive looking for a person who understands what they're going through.
+They are 64 and the Medicare enrollment window is opening. They got a letter from their current carrier announcing plan changes they don't understand. Their mother just lost her employer coverage and they don't know where to start. They've been on Medicare.gov for two hours and now they're more confused than when they began.
 
-The homepage's job is to be that person — in the first three seconds, before a single word is read.
+The homepage's job is to meet them exactly where they are — before selling anything, before naming the company, before explaining any products.
 
-**The narrative arc, told in sections:**
+**The homepage is structured as a conversation, not a sales page.**
+
+The visitor should feel, section by section:
 
 ```
-ACT 1 — RECOGNITION     "I see you. I know exactly why you're here."
-ACT 2 — SELF-SELECTION  "Tell me which situation you're in. I'll speak directly to you."
-ACT 3 — CREDIBILITY     "We are real, licensed, and trusted by the names you already know."
-ACT 4 — THE PROBLEM     "What you've been experiencing is not your fault. This is genuinely complicated."
-ACT 5 — THE SOLUTION    "Here is what we do. Here is how simple it becomes."
-ACT 6 — THE PROCESS     "Here is exactly what happens when you take the next step."
-ACT 7 — DIFFERENTIATION "Here is why this is different from every other insurance company you've seen."
-ACT 8 — PROOF           "Here are people exactly like you, and what happened for them."
-ACT 9 — THE TEAM        "Here are the real licensed people who will answer when you call."
-ACT 10 — GENEROSITY     "Before you give us anything, we want to give you something."
-ACT 11 — COMMUNITY      "We are embedded in the healthcare community you already trust."
-ACT 12 — FINAL CLARITY  "You have seen enough. Here is one simple way forward."
+CONFUSION         → "This is exactly my situation."  (Hero)
+RELIEF            → "I can choose my path here."     (Audience Selector)
+CURIOSITY         → "I can get answers before I call." (AI Introduction)
+CREDIBILITY       → "These people are the real thing."  (Credibility Bar)
+UNDERSTANDING     → "Now I see how this works."       (Independent Agency + Services)
+PROCESS CLARITY   → "I know what happens next."       (How It Works)
+TRUST             → "Real people. Real outcomes."     (Agent Showcase → Testimonials)
+CONFIDENCE        → "There's a wealth of knowledge here."  (Knowledge Center)
+VALIDATION        → "They're embedded in my community."    (Partnerships)
+ACTION            → "I'm ready."                     (Final CTA)
 ```
 
-Every section earns its place by advancing this arc. No section exists for vanity.
+Every section earns its place by advancing this arc. No section exists because insurance websites usually include it.
 
 ---
 
-## The Emotional Journey
+## Revised Section Order
 
-```
-CONFUSION         → Visitor arrives: overwhelmed, unsure, cautious
-CURIOSITY         → Hero section: "this looks different — let me read more"
-RECOGNITION       → Audience selector: "that's exactly my situation"
-CREDIBILITY       → Social proof: "these people are the real deal"
-UNDERSTANDING     → Problem + Services: "I finally get how this works"
-PROCESS CLARITY   → How It Works: "I know what will happen if I take the next step"
-TRUST             → Testimonials + Agents: "real people had a real good experience"
-CONFIDENCE        → Knowledge Center + Trust Architecture: "they know this deeply"
-ACTION            → Final CTA: "I'm ready to talk"
-```
+| # | Section | Emotional Moment |
+|---|---|---|
+| 0 | Navigation | Orientation |
+| 1 | Hero | Confusion → Recognition |
+| 2 | Audience Selector | Recognition → Relief |
+| 3 | AI Assistant Introduction | Relief → Curiosity |
+| 4 | Credibility Bar | Curiosity → Credibility |
+| 5 | Independent Agency | Credibility → Understanding |
+| 6 | Services Overview | Understanding |
+| 7 | How It Works | Understanding → Process Clarity |
+| 8 | Agent Showcase | Process Clarity → Human Trust |
+| 9 | Testimonials | Human Trust → Social Proof |
+| 10 | Knowledge Center | Social Proof → Confidence |
+| 11 | Trust Architecture | Confidence → Validation |
+| 12 | Medical Partnerships | Validation → Community Trust |
+| 13 | Agent Success (brief) | — (secondary audience) |
+| 14 | Final CTA | Action |
+| 15 | Footer | Navigation + nurture |
+
+---
+
+## Phase 1 Build Scope
+
+**Build only these four sections first:**
+
+1. Navigation
+2. Hero
+3. Audience Selector
+4. Credibility Bar
+
+After Phase 1 is built:
+- Polish desktop
+- Polish tablet
+- Polish mobile
+- Optimize accessibility
+- Optimize animations
+- Optimize performance
+- Review against DESIGN.md, PRODUCT.md, SITE_ARCHITECTURE.md, EXPERIENCE.md
+
+**Then stop. Wait for approval before building Phase 2.**
 
 ---
 
@@ -56,831 +101,564 @@ ACTION            → Final CTA: "I'm ready to talk"
 
 ### SECTION 0 — NAVIGATION
 
-**Why it exists:** Orientation, brand identity, and always-available escape routes (phone, CTA).
+**Why it exists:** The navigation is the visitor's constant companion — orientation, trust signal, and always-available escape route. It should feel settled and confident, never anxious.
 
-**Psychological purpose:** A premium, unfussy navigation communicates organizational confidence. An insurance company that doesn't clutter its nav with desperation signals has nothing to prove.
+**Psychological purpose:** A navigation that is clean, unhurried, and complete communicates that the organization has nothing to hide and nothing to prove. Clutter in a nav bar is a visual signal of disorganization.
 
 **Desktop layout:**
 ```
 [Pure Life Logo — left]   [Services ▾]  [Knowledge Center]  [Partners]  [Agents]   [EN|ES]   [(800) XXX-XXXX]   [Get My Free Quote →]
 ```
-- Transparent on load, no background, white/silver text
-- After 80px scroll: `backdrop-filter: blur(20px)`, `background: rgba(10,22,40,0.88)`, border-bottom appears
-- Phone number always visible — tap-to-call, silver text, 15px, never hidden
-- "Get My Free Quote" — emerald, 14px, 40px height, rounded-lg
+
+**Visual behavior:**
+- On load: fully transparent background. Logo and links in white/silver. No border.
+- After 80px scroll: `backdrop-filter: blur(20px)` activates. Background becomes `rgba(10,22,40,0.88)`. A 1px silver border fades in at the bottom edge.
+- The glass effect transition: 300ms ease-out. Never jarring.
+- Phone number: always visible, silver-400, 15px, tap-to-call. Never hidden on any scroll state.
+- "Get My Free Quote": emerald button, 40px height, 14px, rounded-lg. Persistent.
 
 **Mobile layout:**
 ```
-[Logo]                                    [(800) XXX-XXXX icon]  [≡]
+[Pure Life Logo — left]                     [(800) icon]  [≡ Menu]
 ```
-- Hamburger opens full-height right drawer
-- Phone number as tap-to-call at top of drawer
-- Emerald CTA full-width at bottom of drawer
-- Language toggle in drawer, below main links
-
-**Motion:** On page load, nav links fade in left to right at 80ms stagger, 400ms each, after hero content begins loading. After scroll threshold: glass background transitions in at 300ms ease-out — never jarring.
-
-**Accessibility:** `<nav aria-label="Main navigation">`. Skip-to-content link as first focusable element. Keyboard navigation through all links. Dropdown opens on Enter or Space.
-
-**SEO:** Logo links to `/` with descriptive `alt="Pure Life Insurance Services"`. No SEO-relevant content lives only in the nav.
-
----
-
-### SECTION 1 — HERO
-
-**Why it exists:** To answer the visitor's most urgent subconscious question — "Is this the right place for me?" — in under three seconds.
-
-**Psychological purpose:** Pattern interruption. Every other insurance website the visitor has seen is cluttered, pushy, and uses stock photography of smiling seniors. This one is still, dark, authoritative, and speaks directly to their situation without clutter. The stillness itself communicates competence.
-
-**Conversion goal:** Capture the 20–30% of visitors who arrive ready to act. For the remaining 70–80%, create enough intrigue to keep them scrolling.
-
-**The headline:**
-Cormorant Garamond, Display 2XL (80px desktop / 48px mobile), white, italic variant:
-> *"Medicare Coverage, Finally Made Clear."*
-
-The word "Finally" does the psychological work. It validates everything the visitor has been through before arriving.
-
-**Subheadline:**
-Inter, 20px, silver-400, max-width 520px:
-> "We compare plans from 50+ carriers to find the right coverage for your life — not the most profitable plan for us."
-
-This sentence does three things: establishes independence (50+ carriers), signals personalization ("your life"), and proactively addresses the visitor's deepest fear about insurance agents.
-
-**Primary CTA:** Emerald button — "Get My Free Quote →" — 56px height, 220px min-width
-**Secondary CTA:** Ghost/outline — "Explore Medicare Plans" — same height, navy border with cyan text
-
-**Trust micro-strip** (directly below CTAs, 13px, silver-500, inline icons):
-```
-🔒 Licensed in 15 states  ·  50+ carriers compared  ·  Calls answered in < 30 seconds
-```
-
-**Background treatment:**
-- Base: navy-950 full-bleed
-- Decorative: two large gradient orbs — one cyan-to-transparent (top-right, 600px diameter, 25% opacity, slow drift) and one deep blue-to-transparent (bottom-left, 800px, 15% opacity, counter-drift)
-- Both orbs animate on a 45-second loop, imperceptible at first glance, felt as life
-- Optional: abstract silver line art in the far right quadrant — a subtle echo of the eagle's wings, geometric, low-opacity
-
-**Desktop layout:**
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                                                      [Decorative orb]   │
-│   *Medicare Coverage,*                                                  │
-│   *Finally Made Clear.*                                                 │
-│                                                                         │
-│   We compare plans from 50+ carriers to find                           │
-│   the right coverage for your life.                                     │
-│                                                                         │
-│   [Get My Free Quote →]  [Explore Medicare Plans]                      │
-│                                                                         │
-│   🔒 Licensed in 15 states · 50+ carriers · < 30 sec callback          │
-│                                                                         │
-│                                                     [Silver wing art]  │
-└─────────────────────────────────────────────────────────────────────────┘
-```
-Height: 100vh. Content vertically centered at 45% (slightly above true center — feels more grounded).
-
-**Mobile layout:**
-- Content centered
-- Headline 48px, two lines max
-- CTAs stacked vertically, full-width
-- Trust strip wraps to two lines, centered
-- Orb decoratives simplified to single element, reduced opacity
-- Height: auto, min-height 90vh
+- Hamburger opens full-height drawer from right
+- Drawer background: navy-950 with subtle silver shimmer border on left edge
+- Navigation links stacked with 20px vertical rhythm
+- Language toggle (EN | ES) below main links
+- Phone number as tap-to-call near the top of the drawer
+- Emerald "Get My Free Quote" button: full-width, 56px, pinned to bottom of drawer
 
 **Motion:**
-1. Hero bg and orbs: immediate on load, orb drift begins at 0ms
-2. Headline: fade-in + `translateY(20px → 0)`, 700ms ease-out, delay 150ms
-3. Subheadline: same, delay 300ms
-4. CTA buttons: same, delay 500ms
-5. Trust strip: fade-in only, delay 700ms
-6. Wing art: fade-in, delay 900ms, 1000ms duration (slower, more considered)
+- Page load: nav links fade in left to right at 80ms stagger, 400ms duration, beginning after the hero headline starts its animation (not before — the hero should dominate first)
+- Scroll glass transition: 300ms ease-out
+- Mobile drawer: slides in from right, 300ms cubic-bezier(0.16, 1, 0.3, 1)
+- Hamburger → X: morphs via SVG path animation, 200ms
 
-**Where the phone number appears:** In navigation, always visible. Not in the hero itself — one action per section.
+**Mega menu (Services):**
+Full-width panel below nav, navy-900 background with glass border.
+Four columns: Medicare · Life Insurance · Government Benefits · Speak with an Agent (persistent).
+Featured resource cards at the bottom pulling from Knowledge Center.
+Appears on hover (200ms delay to prevent accidental triggers) and keyboard focus.
+Closes on Escape, outside click, or focus leaving the menu.
 
 **Accessibility:**
-- H1 on the headline (only H1 on page)
-- Background orbs: `aria-hidden="true"`
-- CTA buttons: descriptive aria-labels including action outcome
-- Reduced motion: orb animation disabled, entrance animations simplified to instant fade
+- `<nav aria-label="Main navigation">`
+- Skip-to-content link: first focusable element in the DOM, visually hidden until focused, then appears as a cyan pill at the top of the viewport
+- Mega menu: `role="dialog"` equivalent pattern, keyboard navigable, Escape to close
+- Mobile drawer: focus trapped when open, focus returns to hamburger on close
+- `aria-expanded` on hamburger button
 
 **SEO:**
-- H1 contains primary keywords: "Medicare Coverage"
-- Meta title: "Medicare & Life Insurance Plans | Pure Life Insurance Services"
-- Meta description: "Independent Medicare insurance agency — compare 50+ carriers, get personalized plan recommendations, and speak with a licensed agent in under 30 seconds."
-- Hero section content is server-rendered, not client-only
+- Logo: `<a href="/">` with `alt="Pure Life Insurance Services"`
+- Navigation links: descriptive text, no icons-only links
 
 ---
 
-### SECTION 2 — AUDIENCE SELECTOR
+### SECTION 1 — HERO *(Revised)*
 
-**Why it exists:** The homepage is visited by at least four distinct audiences. Without segmentation, the page tries to speak to everyone and resonates with no one. This section is the most important structural decision on the homepage.
+**The fundamental revision:** The hero begins with the visitor's problem, not the company's solution. The visitor must read the headline and think: *"This website understands exactly where I am."*
 
-**Psychological purpose:** The moment a visitor selects their situation, the page has made a silent promise: *I was built for you specifically.* Cognitive load drops immediately. The visitor stops scanning and starts reading.
+---
 
-**Conversion goal:** Increase time-on-page by routing visitors toward their highest-relevance path. Reduce bounce rate by ensuring no visitor feels their situation isn't covered.
+#### Headline Direction
 
-**The setup headline:**
-Plus Jakarta Sans, H2, Display SM, white:
-> "Which situation describes you best?"
+The headline speaks directly to the emotional reality of someone navigating Medicare for the first time, reviewing a plan change, or trying to help a parent. It validates their experience before offering anything.
 
-No body copy. The cards do the explaining.
+**Primary headline candidates — all written visitor-first:**
 
-**Three cards — the architecture of recognition:**
+**Option A — Validation:**
+> *"You Shouldn't Have to Figure Out Medicare Alone."*
 
+**Option B — Empathy:**
+> *"Medicare Has 156 Plan Options. You Deserve Someone Who Knows All of Them."*
+
+**Option C — Direct relief:**
+> *"Confused About Medicare? So Is Almost Everyone. Here's What Helps."*
+
+**Option D — Promise:**
+> *"The Medicare Decision You'll Feel Good About — Finally."*
+
+**Recommended:** Option A. It names the isolation anxiety that is the primary emotional barrier for Medicare newcomers. The word "Alone" carries weight — it addresses fear, not confusion. Every target audience (turning 65, reviewing a plan, helping a parent) can see themselves in it.
+
+**Subheadline — the company's role, stated after the visitor is recognized:**
+> "Pure Life Insurance compares plans from 50+ carriers to find the right coverage for your specific situation — at no cost to you."
+
+The subheadline earns its place because the headline has already created recognition. Now the visitor wants to know who is speaking and what they offer.
+
+**Supporting trust strip** (directly below CTAs, 13px, silver-500):
 ```
-┌──────────────────────┐  ┌──────────────────────┐  ┌──────────────────────┐
-│                      │  │                      │  │                      │
-│   [Icon: Calendar]   │  │   [Icon: Refresh]    │  │   [Icon: Heart]      │
-│                      │  │                      │  │                      │
-│  Turning 65 or       │  │  Reviewing My        │  │  Helping a           │
-│  Retiring Soon       │  │  Current Plan        │  │  Parent or Family    │
-│                      │  │                      │  │  Member              │
-│  First time choosing │  │  It's Annual         │  │                      │
-│  Medicare coverage.  │  │  Enrollment Period   │  │  Navigating Medicare │
-│  Let's start from    │  │  and you want to     │  │  for someone you     │
-│  the beginning.      │  │  compare options.    │  │  love.               │
-│                      │  │                      │  │                      │
-│  [Get Started →]     │  │  [Compare Plans →]   │  │  [Get Help →]        │
-│                      │  │                      │  │                      │
-└──────────────────────┘  └──────────────────────┘  └──────────────────────┘
+🔒 Licensed in [X] states  ·  50+ carriers compared  ·  A licensed agent answers in < 30 seconds
 ```
 
-A subtle fourth option below the cards, in silver text, smaller:
-> "Looking for life insurance, final expense, or government benefits? → [See all services]"
+**CTAs:**
+- Primary: Emerald — "Get My Free Quote →" — 56px height, 220px min-width
+- Secondary: Ghost/outline — "Explore Medicare Plans" — same height, cyan border
 
-This ensures no audience feels uncovered without cluttering the three primary cards.
+---
 
-**Desktop layout:** Three equal-width cards in a row, generous gap (48px), max-width 1100px centered.
+#### Hero Visual Design *(New specification — premium, no stock photography)*
 
-**Mobile layout:** Stacked vertically, full-width cards, generous padding. The chevron on each "Get Started" link points right (not down), maintaining the sense of forward momentum.
+**The philosophy:** The hero is cinematic. It is not a photo of a smiling senior. It is not a generic gradient. It is a custom-composed visual that communicates the brand's identity through atmosphere and light — the same way a premium financial services company signals its character through its physical space.
 
-**Card design:**
-- Background: navy-800, glass border (1px rgba(255,255,255,0.08))
-- Icon: 40px, silver, Lucide React
-- Hover: `translateY(-4px)`, border shifts to cyan at 30% opacity, shadow-glow-cyan at 15%, icon becomes cyan
-- The selected card (on click): brief emerald ring pulse before navigation
+**Visual inspiration:** The Pure Life logo contains two elements: a heart in cyan-to-navy gradient, and a silver eagle with spread wings. These are not decorative — they are the brand's soul. The hero translates those elements into an abstract visual language.
+
+**Background:**
+- Base layer: `navy-950` (#04101F) — the deepest color in the palette. Establishes authority and depth.
+- No photography. No illustration. Light and geometry.
+
+**Layered visual elements (back to front):**
+
+**Layer 1 — The Wing Gradient Field:**
+Two sweeping silver gradient arcs, large and abstract, positioned in the lower-center of the composition. They echo the spread wings of the logo bird — not literally, but in feeling. These are not wing illustrations; they are gradient fields that create the *impression* of wings: curved, graceful, protective. Each arc is `linear-gradient` from `rgba(168,178,188,0.12)` at the outer edge to `rgba(168,178,188,0.0)` at the center. Together they form a subtle V-shape of light, as if something is rising from below the screen. These are large — each spanning 40% of the viewport width.
+
+**Layer 2 — The Cyan Heart Glow:**
+A single radial gradient centered in the upper-right quadrant, `rgba(43,200,232,0.15)` at center to transparent at edges. Diameter: 500px. This is not a shape — it is ambient light. It gives the dark background a focal point and echoes the cyan heart in the logo without reproducing it.
+
+**Layer 3 — The Navy Depth Gradient:**
+A deep radial gradient in the lower-left, `rgba(27,82,152,0.25)` fading to transparent. Creates a sense of depth and dimension in the dark field.
+
+**Layer 4 — Glass Panel (contains the hero content):**
+The headline, subheadline, and CTAs sit inside a glass panel:
+```css
+background: rgba(255,255,255,0.03)
+backdrop-filter: blur(24px) saturate(180%)
+border: 1px solid rgba(255,255,255,0.07)
+border-radius: 20px
+padding: 56px 64px
+```
+The glass panel is positioned left-of-center on desktop. It does not fill the full viewport — its edges fade into the dark background, as if the content is emerging from the depth behind it. The right side of the viewport beyond the panel breathes — open dark space with the wing gradients and cyan glow.
+
+**Layer 5 — Silver Micro-Texture:**
+At 2% opacity, a very fine noise/grain texture applied to the background. Visible only on high-resolution displays, it adds material depth — the difference between a printed piece and a screen-captured one.
+
+**Light philosophy:** The hero has a single implied light source — above-right, cyan-tinted. This is where the glow lives. The wing gradients catch this light from below, creating a sense of something rising toward it. The glass panel reflects it softly. This directional lighting makes the composition feel three-dimensional without using 3D.
+
+**Typography within the glass panel:**
+- Eyebrow label: 12px, Plus Jakarta Sans, uppercase, letter-spacing 0.1em, silver-400 — "INDEPENDENT MEDICARE & INSURANCE ADVISORY"
+- Headline: Cormorant Garamond, 72px desktop / 48px mobile, white, weight 600, line-height 1.1, letter-spacing -0.02em
+- Subheadline: Inter, 19px, silver-300, line-height 1.7, max-width 500px
+- CTAs: side by side (desktop), stacked (mobile)
+- Trust strip: below CTAs, 13px
+
+**Desktop composition:**
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                         [Cyan glow — upper right]       │
+│   ┌─────────────────────────────────┐                                   │
+│   │ [glass panel]                   │                                   │
+│   │                                 │         [Open dark space +        │
+│   │  INDEPENDENT MEDICARE ADVISORY  │          wing gradient arcs       │
+│   │                                 │          in lower-right area]     │
+│   │  "You Shouldn't Have to         │                                   │
+│   │  Figure Out Medicare Alone."    │                                   │
+│   │                                 │                                   │
+│   │  Pure Life compares plans from  │                                   │
+│   │  50+ carriers to find the right │                                   │
+│   │  coverage for your situation.   │                                   │
+│   │                                 │                                   │
+│   │  [Get My Free Quote]  [Explore] │                                   │
+│   │                                 │                                   │
+│   │  🔒 Licensed · 50+ carriers    │                                   │
+│   └─────────────────────────────────┘                                   │
+│                                                                         │
+│        [Wing gradient arcs — lower center — silver, abstract]          │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+Height: 100vh. Content vertically centered at 48%.
+
+**Mobile composition:**
+- Glass panel becomes full-screen (no floating panel — it fills the viewport)
+- Wing gradients positioned at bottom of screen below the content
+- Cyan glow moves to top-center
+- Content stacked: eyebrow → headline → subheadline → CTAs (full-width, stacked) → trust strip
+- Background grain texture disabled (performance)
 
 **Motion:**
-- Cards enter on scroll: stagger 120ms each, `translateY(24px → 0)` + fade, 500ms ease-out
-- Hover lift: 200ms ease-spring
+All entrance animations are sequential — the hero builds itself in front of the visitor:
+1. Background layers (wing gradients, cyan glow): present immediately, opacity 0 → 1, 800ms, ease-out
+2. Glass panel border: fades in, 600ms, delay 100ms
+3. Eyebrow label: fade-up from `translateY(12px)`, 500ms, delay 200ms
+4. Headline: fade-up from `translateY(20px)`, 700ms, delay 350ms — the most important element gets the most time
+5. Subheadline: fade-up, 500ms, delay 600ms
+6. CTAs: fade-up, 400ms, delay 800ms
+7. Trust strip: fade-in only (no translate), 300ms, delay 1100ms
+8. Wing gradient orbs: very slow drift — each on a 50-second loop, independent directions, amplitude ~30px. Never distracting. Felt, not seen.
 
-**Psychological detail:** The icons are abstract enough to be non-threatening but specific enough to communicate the situation. A calendar communicates "new beginning." A refresh arrow communicates "reconsideration, not panic." A heart communicates care and family, not insurance.
+**Reduced motion:** Orb drift disabled. All translates become instant fades. Stagger timing halved.
 
-**Where this routes:** Each card routes to a landing page tuned to that audience's journey, not a generic Medicare page.
+**Accessibility:**
+- H1 on the headline
+- Glass panel: no accessibility role needed — it is a layout container
+- Background decorative elements: `aria-hidden="true"`
+- Eyebrow label: `aria-label` on parent element clarifies it is a descriptor
+- Orb animation: `@media (prefers-reduced-motion: no-preference)` guard
 
-**Accessibility:** Cards are `<a>` elements, keyboard navigable, hover states replicated on focus. Icons are `aria-hidden`. Card text is the accessible label.
-
-**SEO:** H2 is a supporting keyword statement. Card text contains natural language variations of key Medicare searches ("Turning 65," "Annual Enrollment Period," "Medicare for family member").
+**SEO:**
+- H1: "You Shouldn't Have to Figure Out Medicare Alone." — contains implicit Medicare keyword
+- Eyebrow label text: "Independent Medicare & Insurance Advisory" — contains explicit keyword
+- Meta title: "Medicare & Life Insurance Plans | Pure Life Insurance Services"
+- Server-rendered (no client-only content above fold)
 
 ---
 
-### SECTION 3 — SOCIAL PROOF / CREDIBILITY BAR
+### SECTION 2 — INTERACTIVE AUDIENCE SELECTOR *(Revised)*
 
-**Why it exists:** Before the visitor reads another word about what Pure Life offers, a quiet voice in their head asks: "But are these people real? Are they legitimate?" This section answers that question without being asked.
+**Why it exists:** A homepage that tries to speak to everyone speaks to no one. The audience selector transforms a generic page into a personalized path — immediately after the hero creates recognition, this section offers resolution: *"Your specific path is here."*
 
-**Psychological purpose:** Institutional legitimacy through association and specificity. Numbers are more credible than adjectives. Logos are more credible than claims.
+**Psychological purpose:** Empowerment and self-determination. The visitor is given control of their experience before anything is asked of them. Choosing a path is an act of engagement, not commitment. The cognitive effect is profound: a visitor who has self-selected their journey is more likely to complete it.
 
-**Conversion goal:** Lower the psychological barrier to continuing. A visitor who doubts legitimacy will not convert. This section neutralizes that doubt.
+**Conversion goal:** Increase time-on-page and click-through rate by routing visitors to the content most relevant to their situation. Reduce bounce rate by ensuring every visitor type is explicitly acknowledged.
+
+**Transition from hero:** The section appears immediately below the hero with zero gap — it feels like part of the same experience, the next step in a conversation, not a separate page section.
+
+**Section framing (above the cards):**
+Plus Jakarta Sans, 14px, uppercase, silver-400, letter-spacing 0.08em — centered:
+> "WHAT BRINGS YOU HERE TODAY?"
+
+No headline. The label is enough. The cards do the explaining.
+
+---
+
+**The Six Paths:**
+
+```
+┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+│   [Icon]         │  │   [Icon]         │  │   [Icon]         │
+│                  │  │                  │  │                  │
+│  I'm Turning 65  │  │  I Already Have  │  │  I'm Helping     │
+│                  │  │  Medicare        │  │  My Parents      │
+│  First-time      │  │                  │  │                  │
+│  Medicare        │  │  Reviewing or    │  │  Navigating      │
+│  coverage.       │  │  switching       │  │  coverage for    │
+│  Start here.     │  │  plans.          │  │  someone I love. │
+└──────────────────┘  └──────────────────┘  └──────────────────┘
+
+┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+│   [Icon]         │  │   [Icon]         │  │   [Icon]         │
+│                  │  │                  │  │                  │
+│  I Need Life     │  │  Government      │  │  I'm a Licensed  │
+│  Insurance       │  │  Benefits        │  │  Agent           │
+│                  │  │                  │  │                  │
+│  Term, whole,    │  │  SNAP, Medicaid, │  │  Looking for a   │
+│  final expense,  │  │  ACA, and more   │  │  better agency   │
+│  or mortgage     │  │  — see what      │  │  to build my     │
+│  protection.     │  │  you qualify for.│  │  career with.    │
+└──────────────────┘  └──────────────────┘  └──────────────────┘
+```
+
+**Card icons (Lucide React, 28px):**
+- Turning 65: `Calendar` — new beginning
+- Already Have Medicare: `RefreshCw` — review and reconsider
+- Helping Parents: `Heart` — care and family
+- Life Insurance: `Shield` — protection
+- Government Benefits: `Building` or `Landmark` — institutional
+- Licensed Agent: `Briefcase` — professional
+
+**The personalization interaction:**
+
+When a visitor selects a card:
+1. The selected card receives a cyan glow border and slightly scales up (1.02)
+2. The other cards dim to 60% opacity with a smooth 200ms transition
+3. A personalized content strip slides down below the card grid (240ms ease-out) — a single row of context containing:
+   - A short, specific message for that audience ("Great — you're in the right place. Here's the most important thing to know as you approach 65...")
+   - A recommended path link (e.g., "Start with the Turning 65 Guide →")
+   - A CTA: "Talk to a specialist for your situation" (ghost button — not emerald yet)
+4. The page does not redirect. The visitor remains on the homepage with personalized context surfaced beneath the selector.
+
+This interaction does not require a backend. It is client-side state — the appropriate content strip is pre-rendered and revealed on selection.
+
+**Visual design:**
+
+Cards sit on navy-800 surfaces with 1px silver shimmer border at rest. The selector sits on a slightly lighter navy-900 background, differentiating it from the hero while maintaining visual continuity. No heavy dividers between hero and this section — the transition is atmospheric (a subtle 100px gradient from navy-950 to navy-900).
+
+**Desktop:** 3×2 grid. 32px gap. Cards: 260px wide minimum, auto height.
+**Tablet:** 3×2 grid, smaller cards.
+**Mobile:** 2×3 grid on large mobile. 1×6 vertical stack on small mobile (< 400px). Cards are compact on mobile — icon + short title + one-line description only, no paragraph.
+
+**Motion:**
+- Section entrance on scroll: All 6 cards fade-in simultaneously at 400ms, ease-out — they arrive as a unified set, not a staggered performance
+- Individual hover: card lifts 4px, border brightens, icon shifts to cyan — all 200ms ease-spring
+- Selection interaction: 200ms dim for non-selected, 200ms glow for selected
+- Personalized content strip: slides down from height: 0 → auto over 240ms ease-out, with fade
+
+**Accessibility:**
+- Cards are `<button>` elements (or `<a>` if they navigate), not `<div>`s
+- Selected state: `aria-pressed="true"` on the active card
+- Personalized strip: `aria-live="polite"` so screen readers announce the new content
+- All icons: `aria-hidden="true"`
+- Card labels: full descriptive text as the accessible name
+
+**SEO:**
+- Card text contains natural keyword phrases: "Turning 65 Medicare," "Medicare plan review," "life insurance," "government benefits"
+- The personalized content strips contain additional keyword-rich anchor text to inner pages
+
+---
+
+### SECTION 3 — AI ASSISTANT INTRODUCTION *(Moved up from Section 10)*
+
+**Why it exists here:** The AI assistant is most valuable at the moment a visitor has a question they're not yet ready to call about. That moment happens right now — they've just identified their situation in the audience selector, and they have questions. Waiting until the Knowledge Center (Section 10 in the original blueprint) wastes this readiness.
+
+**Psychological purpose:** Reduction of the commitment barrier. The single biggest reason qualified visitors don't call is that they feel the call is irreversible — "if I call, they'll pressure me." The AI assistant offers a zero-commitment alternative: *get answers first, call when you're ready.* This does not cannibalize phone leads — it warms them.
+
+**Conversion goal:** Activate the AI assistant as a lead warm-up tool. Visitors who engage with the AI and receive a helpful answer are significantly more likely to convert when they do reach out to an agent.
+
+**The critical tone note:** The AI should feel helpful, not robotic. This section introduces it as a knowledgeable companion — not a chatbot, not an automated system.
+
+**Section design — contained, not full-bleed:**
+
+This section is deliberately understated. It is not a hero-scale announcement. It is a quiet, elegant introduction — a shelf-card, not a billboard.
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                                                                        │
+│  [Small icon: message-circle, cyan, 24px]                              │
+│                                                                        │
+│  Have Questions Before You're Ready to Call?                           │
+│                                                                        │
+│  Ask our AI assistant. It knows Medicare, life insurance, ACA,         │
+│  government benefits, and more — and it's available right now,         │
+│  before you speak with a licensed advisor.                             │
+│                                                                        │
+│  ┌─────────────────────────────────────────────────────────────────┐  │
+│  │  Ask anything — "What's the difference between Medicare         │  │
+│  │  Advantage and Supplement?" →                                   │  │
+│  └─────────────────────────────────────────────────────────────────┘  │
+│                                                                        │
+│  [Ask the Assistant →]  ← opens the AI chat panel                     │
+│                                                                        │
+│  Educational only · Personalized plan advice from a licensed agent     │
+│                                                                        │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+**Design spec:**
+- Container: max-width 720px, centered
+- Background: navy-800, 1px silver shimmer border, 24px border-radius — the premium card treatment
+- Cyan icon at top-left, small — not dominant
+- Headline: Plus Jakarta Sans, H3 weight, 22px, white
+- Body: Inter, 16px, silver-300
+- Example prompt box: navy-700, 1px rgba(white,0.08) border, 14px silver-400 text — appears as an invitation, not a real input
+- "Ask the Assistant" button: ghost/outline, cyan border and text — not emerald (that is reserved for primary lead capture)
+- Disclaimer beneath button: 12px, silver-500, centered
+
+**Clicking "Ask the Assistant":** Opens the full AI chat panel (bottom-right drawer / full-screen on mobile). The example question is optionally pre-populated into the input.
+
+**Desktop:** Full-width centered container with max-width constraint, never touching the viewport edges.
+**Mobile:** Same card, full-width with 20px horizontal padding. The example prompt shows a shorter variant.
+
+**Motion:**
+Section fades and rises into view on scroll (400ms, ease-out). The example prompt blinks a cursor once on first viewport entry — a subtle animation suggesting life, then stopping. The "Ask the Assistant" button has a gentle cyan glow pulse on hover.
+
+**Accessibility:**
+- The example prompt box is `aria-label="Example question for the AI assistant"` — not a real input, so no form role
+- "Ask the Assistant" button: descriptive `aria-label`
+- Disclaimer text: appropriate contrast (silver-500 on navy-800 meets AA)
+
+---
+
+### SECTION 4 — CREDIBILITY BAR
+
+**Why it exists:** The visitor has now identified their situation (Section 2) and been introduced to a support resource (Section 3). Before the page begins explaining Medicare or insurance, a quiet but powerful moment of institutional validation is needed: *"These people are real, licensed, and trusted by the names you already know."*
+
+**Psychological purpose:** Legitimacy through association and specificity. Named carrier logos signal that major insurance companies have accepted Pure Life as a distribution partner — an implicit endorsement that no marketing copy can replicate. Specific numbers (not ranges, not adjectives) signal honesty.
+
+**Conversion goal:** Complete the transition from "evaluating the brand" to "engaging with the content." A visitor who doubts legitimacy stops reading here. This section eliminates that doubt.
 
 **Layout:**
+
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
-│  INDEPENDENT AGENCY TRUSTED BY                                           │
+│                                                                          │
+│  INDEPENDENT AGENCY — TRUSTED CARRIER PARTNERS                          │
 │                                                                          │
 │  [Humana]  [UnitedHealthcare]  [Aetna]  [BCBS]  [Cigna]  [Wellcare]   │
 │                                                                          │
 │  ─────────────────────────────────────────────────────────────────────  │
 │                                                                          │
-│  [1,200+]           [50+]              [15]               [< 30 sec]    │
-│  Clients Served     Carriers           States Licensed    Avg. Callback │
+│     [1,200+]          [50+]            [15]              [< 30 sec]     │
+│    Clients Served  Carriers Compared  States Licensed   Agent Callback  │
 │                                                                          │
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Background:** Navy-900, very subtle silver gradient border at top and bottom edges — defining the section without a heavy divider.
+**Carrier logos:**
+- White/monochrome SVG variants
+- 60% opacity at rest → 100% on hover (200ms)
+- If actual carrier SVGs are unavailable at build time: use the carrier names in Plus Jakarta Sans Medium, silver-400, tracked — equally professional, avoids placeholder image artifacts
+- Logos are evenly spaced in a single row, vertically centered
 
-**Carrier logos:** 60% opacity at rest, 100% on hover. Actual SVG logos, white/monochrome versions. If carrier permission is pending, use text names in silver-400 instead — equally credible.
+**Number statistics:**
+- Stat numbers: Cormorant Garamond, 3rem, white — the serif creates a premium ledger-style presentation
+- Stat labels: Plus Jakarta Sans, 11px, uppercase, silver-500, letter-spacing 0.08em
+- Number counter animation: triggers once when section enters viewport (60% threshold). Counts from 0 to final value over 1,200ms, ease-out. Never replays on subsequent scrolls.
 
-**Number counters:** On first scroll-into-view, numbers count up from 0 to their value over 1,200ms with ease-out. This is one of the most effective micro-animations on a homepage — it draws the eye and gives the impression of live data even for static numbers. Font: Cormorant Garamond, 3rem, white. Labels: Plus Jakarta Sans, 12px, uppercase, silver-500, letter-spacing 0.08em.
+**Background:**
+Navy-900, separated from Section 3 by a 1px silver gradient line (very subtle — `rgba(168,178,188,0.15)`). Not a divider, just a visual breath.
 
-**Desktop:** Carrier logos centered in a row. Numbers in a 4-column grid below.
-**Mobile:** Logos wrap to 2×3 grid. Numbers in 2×2 grid. All centered.
-
-**Motion:** Section fades in. Logo row: stagger 60ms, fade only. Number counter: triggered once when 60% of section is in viewport. Numbers never count up again on subsequent scrolls — that would feel glitchy.
-
-**Where partner logos appear:** This is the first appearance of carrier logos. They reappear in the footer's trust row and optionally in the Trust Architecture section near the bottom.
-
-**Accessibility:** Carrier logos have descriptive alt text. Number counters: when reduced motion is enabled, numbers display their final value immediately. `aria-label` on each stat: "1,200 clients served."
-
-**SEO:** The section text contains supporting keywords: "independent insurance agency," "compare Medicare carriers."
-
----
-
-### SECTION 4 — THE PROBLEM
-
-**Why it exists:** Named problems create instant rapport. A visitor who reads "Medicare comes with 156 plan choices and a 120-page government handbook" and thinks "YES, that is EXACTLY what I've been dealing with" has just bonded with the brand. This section does not sell. It witnesses.
-
-**Psychological purpose:** Validation. The single most powerful conversion technique is making the prospect feel understood before attempting to help them. Insurance is a category famous for not understanding its customers. Pure Life earns trust by demonstrating that it does.
-
-**Conversion goal:** This section does not have a CTA. Its goal is to deepen the visitor's engagement and make the next section (the solution) feel earned.
-
-**Layout — two columns, desktop:**
-```
-┌────────────────────────────────────────┬───────────────────────────────┐
-│                                        │                               │
-│  THE REALITY OF MEDICARE TODAY         │  [Large stylized quote        │
-│                                        │   or abstract illustration    │
-│  Medicare comes with 156 plan choices, │   — a map of complexity,      │
-│  a 120-page government handbook, and   │   or a tangled line that      │
-│  an enrollment window you can miss     │   resolves into a clean       │
-│  without knowing it.                   │   single path]                │
-│                                        │                               │
-│  Most people spend weeks researching   │                               │
-│  and still aren't sure they made       │                               │
-│  the right choice.                     │                               │
-│                                        │                               │
-│  That's not a failure of effort.       │                               │
-│  It's a failure of the system.         │                               │
-│                                        │                               │
-│  We built Pure Life because we         │                               │
-│  believe that decision — one of the    │                               │
-│  most important financial decisions    │                               │
-│  you'll make — deserves better.        │                               │
-│                                        │                               │
-└────────────────────────────────────────┴───────────────────────────────┘
-```
-
-**Background:** Slightly lighter than hero — navy-900, with a very faint silver grain texture (2% opacity) that adds tactile depth without being visible at first glance.
-
-**Typography:** Section label "THE REALITY OF MEDICARE TODAY" in 12px, uppercase, tracked, silver-500. Body text Inter 18px, line-height 1.8, silver-100 — more generous spacing than most pages because this is meant to be read, not scanned.
-
-**The right column:** Not a photo. An abstract visual that communicates complexity — a grid of overlapping lines or decision nodes that gradually resolves into a single clear path. This communicates the brand's value proposition visually without stating it.
-
-**Mobile:** Single column, right column visual becomes a full-width decorative element above the text.
-
-**Motion:** Left content: fades and rises on scroll entry, 500ms. Right visual: fades in at 300ms delay. The visual elements within the right column animate in sequence — complexity first, then resolution — over 1,200ms as the section enters view.
-
-**Accessibility:** Decorative right-column visual is `aria-hidden`. Body text has high contrast. No animation on reduced-motion systems.
-
-**SEO:** Natural language containing: "Medicare plan choices," "Medicare enrollment," "Medicare decision." Internal link in the body: "Medicare handbook" links to `/knowledge/medicare/basics`.
-
----
-
-### SECTION 5 — SERVICES OVERVIEW
-
-**Why it exists:** Having validated the problem, the page now introduces the solution. This section answers: "What exactly do you do?" in the clearest possible way.
-
-**Psychological purpose:** Orientation. The visitor needs to know that their specific situation is covered — whether they're looking for Medicare, life insurance, or government benefits help. Clear categorical organization signals organizational competence.
-
-**Conversion goal:** Route engaged visitors to the service most relevant to them. Each card links to its service hub page.
-
-**Section headline:**
-Cormorant Garamond, Display MD, white:
-> *"Everything You Need, In One Place."*
-
-**Supporting copy:**
-Inter, 17px, silver-400:
-> "From Medicare to life insurance to government benefits — we're your independent guide through every coverage decision."
-
-**Three service cards:**
-
-```
-┌─────────────────────────────┐  ┌─────────────────────────────┐  ┌─────────────────────────────┐
-│                             │  │                             │  │                             │
-│  [Icon: Shield — cyan]      │  │  [Icon: Heart — cyan]       │  │  [Icon: Building — cyan]    │
-│                             │  │                             │  │                             │
-│  Medicare Plans             │  │  Life Insurance             │  │  Government Benefits        │
-│                             │  │                             │  │                             │
-│  Advantage · Supplement     │  │  Term · Whole · Final       │  │  ACA · Medicaid · SNAP      │
-│  Part D · Savings Programs  │  │  Expense · Mortgage Prot.   │  │  and more                   │
-│                             │  │                             │  │                             │
-│  "Compare plans from 50+    │  │  "Straightforward           │  │  "Many benefits go          │
-│  carriers at no cost        │  │  coverage that protects     │  │  unclaimed. We help         │
-│  to you."                   │  │  what matters most."        │  │  you find yours."           │
-│                             │  │                             │  │                             │
-│  [Explore Medicare →]       │  │  [Explore Life Insurance →] │  │  [Explore Benefits →]       │
-│                             │  │                             │  │                             │
-└─────────────────────────────┘  └─────────────────────────────┘  └─────────────────────────────┘
-```
-
-**Card design:** Navy-800 background, silver shimmer border. On hover: `translateY(-6px)`, shadow-xl deepens, border transitions to cyan at 40% opacity. The icon shifts from silver to cyan on hover. The card text subtly brightens.
-
-**Desktop:** Three equal-width cards, 40px gap.
-**Mobile:** Vertical stack, full-width cards.
-
-**CTA:** Each card has a ghost-style secondary link (not an emerald button — those are reserved for primary lead capture). The links say "Explore [Category] →" with an arrow that shifts right on hover.
-
-**Motion:** Cards enter on scroll with 150ms stagger, `translateY(32px → 0)` + fade, 500ms ease-out. The silver shimmer border animation (the metallic gradient) plays once on card entry, then stops — a flash of premium that doesn't become noise.
-
-**Accessibility:** Cards have `role="article"`. Card links have descriptive text including the category. Icons are `aria-hidden`.
-
-**SEO:** Section contains natural keyword variations: "Medicare Advantage plans," "life insurance," "government benefits programs." Card links are anchor tags pointing to their respective service pages.
-
----
-
-### SECTION 6 — HOW IT WORKS
-
-**Why it exists:** The number-one reason visitors don't convert is fear of what happens after they submit a form. "Will I be sold to? Will I be pressured? What will actually happen?" This section answers those questions before they're asked.
-
-**Psychological purpose:** Fear reduction through process transparency. When visitors know exactly what will happen — step by step — the act of submitting a form transforms from a leap of faith into a logical next step. This is one of the highest-impact sections on any lead generation homepage.
-
-**Conversion goal:** Convert the "almost ready" visitors who have been engaged but hesitant.
-
-**Section label:** 12px, uppercase, cyan, tracked — "THE PROCESS"
-**Headline:** Cormorant Garamond, Display MD, white — *"From Confused to Covered in Three Steps."*
-
-**Three steps — displayed with architectural clarity:**
-
-```
-  [  1  ]                      [  2  ]                      [  3  ]
-   ────                         ────                         ────
-  Tell Us Your                 We Compare                   You Enroll
-  Situation                    Your Options                 With Confidence
-
-  Complete a short form or      Your licensed agent          When you're ready,
-  call us directly. It takes    compares plans from          your agent handles
-  less than 2 minutes.          50+ carriers to find         the paperwork. Most
-  No commitment.                the best fit for your        enrollments are
-                                needs and budget.            completed same-day.
-```
-
-**Visual treatment:** Three columns with large step numbers in Cormorant Garamond, Display 2XL (80px), very low-opacity (15%) navy-600 — serving as background texture for the step. A thin cyan connecting line runs horizontally between steps, with a small circular node at each step's number position. On scroll-in, the line draws from left to right over 800ms — one of the most effective entrance animations for a process section.
-
-**Below the steps:** One emerald button, centered:
-> "Get My Free Quote →"
-
-And a secondary ghost text below it:
-> "Or call us directly: (800) XXX-XXXX — we answer in under 30 seconds"
-
-**This is the third CTA placement on the page** (after hero, and after implied card CTAs). It appears here because visitors who have read through the problem and solution sections are now at maximum readiness.
-
-**Desktop:** Three columns, 60px gap.
-**Mobile:** Vertical stack. Step numbers become 48px left-aligned, not centered. Connecting line becomes a vertical line on the left edge of the content, drawing downward.
+**Desktop:** Full-width. Carrier logos centered. Stats in a 4-column grid below.
+**Tablet:** Carrier logos wrap into 2 rows. Stats remain 4 columns.
+**Mobile:** Carrier logos in a 2×3 grid. Stats in a 2×2 grid. Both centered.
 
 **Motion:**
-1. Section headline: fade-up on scroll entry, 500ms
-2. Connecting line: draws from left to right (desktop) or top to bottom (mobile) over 1000ms, ease-in-out, triggered when section is 30% in viewport
-3. Step content: fades in as the line reaches it — steps 1, 2, 3 appear sequentially at 333ms intervals
-4. CTA: fades in after all steps have appeared, 400ms delay after step 3
+- Section entrance: fade-in, 400ms — no translate (this section is institutional, not energetic)
+- Carrier logos: stagger 50ms each, fade-in, 300ms
+- Counter animation: triggered at 60% viewport entry, 1,200ms count-up
 
-**Accessibility:** Steps are a numbered list (`<ol>`). The connecting line animation is decorative (`aria-hidden`). On reduced motion: steps appear simultaneously, no drawing animation.
+**Accessibility:**
+- Carrier logos: `alt` text describing the carrier (e.g., `alt="Humana — carrier partner"`)
+- Stat counters: `aria-label` on each stat element ("1,200 clients served"). Reduced motion: final value displayed immediately, no count-up.
+- Section label: `role="region"` with `aria-label="Carrier partners and company statistics"`
 
----
-
-### SECTION 7 — WHY PURE LIFE (DIFFERENTIATORS)
-
-**Why it exists:** Having explained what we do and how it works, we now explain why we are different. In a saturated market, differentiation is survival.
-
-**Psychological purpose:** Confidence through distinction. The visitor has seen insurance ads before. They have visited other insurance websites. This section names the things that make Pure Life unlike those experiences — before the visitor can form the objection themselves.
-
-**Conversion goal:** Address objections. The four most common objections to using an insurance agent: "They only recommend what pays them the most," "I don't want to be pressured," "I can just do this myself," "I don't know if they're actually qualified." Each differentiator addresses one of these.
-
-**Section label:** 12px, uppercase, silver, tracked — "WHY INDEPENDENT MATTERS"
-**Headline:** Cormorant Garamond, Display MD, white:
-> *"Not Tied to Any Carrier. Loyal Only to You."*
-
-**Four differentiator items — two-column grid, desktop:**
-
-```
-┌──────────────────────────────────┐  ┌──────────────────────────────────┐
-│ [Icon: Scale — silver → cyan]    │  │ [Icon: Zap — silver → cyan]      │
-│                                  │  │                                  │
-│ Truly Independent                │  │ Technology + Human Expertise     │
-│                                  │  │                                  │
-│ We're not employed by Humana or  │  │ Our AI compares hundreds of      │
-│ UHC or Aetna. We work for you.   │  │ plan options instantly. Our      │
-│ That means we recommend plans    │  │ licensed agents explain what     │
-│ based on your needs — not our    │  │ the numbers mean for your life.  │
-│ commission.                      │  │ The best of both.                │
-│                                  │  │                                  │
-└──────────────────────────────────┘  └──────────────────────────────────┘
-
-┌──────────────────────────────────┐  ┌──────────────────────────────────┐
-│ [Icon: Clock — silver → cyan]    │  │ [Icon: Globe — silver → cyan]    │
-│                                  │  │                                  │
-│ Calls Answered in < 30 Seconds   │  │ English and Spanish              │
-│                                  │  │                                  │
-│ Submit a form and your phone     │  │ Our team serves English and      │
-│ rings in under thirty seconds.   │  │ Spanish-speaking clients with    │
-│ No hold music. No callback        │  │ the same level of care,          │
-│ windows. A licensed agent,       │  │ fluency, and expertise.          │
-│ now.                             │  │                                  │
-└──────────────────────────────────┘  └──────────────────────────────────┘
-```
-
-**Mobile:** Single column, all four stacked.
-
-**Item design:** Each item is a borderless card — no card surface, just the icon, bold headline in Plus Jakarta Sans, and body text in Inter. The absence of a card border makes this section feel different in texture from the Services section above. Visual variety holds attention.
-
-**Motion:** Two-column entry: left column translates in from the left, right column from the right, both at 400ms ease-out, triggered on scroll. Items within each column stagger 120ms.
-
-**Accessibility:** Each differentiator is an article in an unordered list. Icons are `aria-hidden`.
+**SEO:**
+- Section label text "Independent Agency — Trusted Carrier Partners" contains primary keyword "independent [insurance] agency"
+- Stats are crawlable text (not images)
 
 ---
 
-### SECTION 8 — TESTIMONIALS
+### SECTIONS 5–14 — PHASE 2 BLUEPRINT
 
-**Why it exists:** The visitor has now seen what we offer, how it works, and why we're different. The natural next question is: "Does this actually work? Has it worked for people like me?" Testimonials answer that question from the mouths of the people who matter most — past clients.
-
-**Psychological purpose:** Social proof is the most powerful conversion driver after fear reduction. The brain treats other people's decisions as information about safety. "Someone else tried this and it worked for them" reduces the perceived risk of acting to near-zero.
-
-**Conversion goal:** Close the remaining doubt gap. Visitors who have read this far are genuinely interested. Testimonials are the final push from "interested" to "ready."
-
-**Critical design principle for testimonials:** Specificity creates credibility. "Great service, very helpful!" is noise. "Maria helped me compare 12 plans and saved me $180 a month on my prescription coverage" is evidence.
-
-**Section label:** 12px, uppercase, silver — "CLIENT STORIES"
-**Headline:** Cormorant Garamond, Display MD, white — *"Real People. Real Plans. Real Outcomes."*
-
-**Three testimonials:**
-
-```
-┌──────────────────────────────────────────────────────────┐
-│                                                          │
-│  " Maria walked me through every plan option for         │
-│    my area and found me a Medicare Advantage plan         │
-│    that covered my cardiologist — something my old        │
-│    plan didn't. I'm saving $210 a month. "               │
-│                                                          │
-│  [Photo]  Robert T. · Retired Teacher · Tampa, FL       │
-│           Medicare Advantage · Enrolled 2024             │
-│                                                          │
-└──────────────────────────────────────────────────────────┘
-```
-
-Three testimonials, specific to different audience segments:
-1. **Medicare Advantage** — retired senior, specific plan benefit + savings amount
-2. **Final Expense / Life Insurance** — adult child helping a parent, specific emotional outcome
-3. **AEP / Plan Switch** — existing Medicare client who called during AEP
-
-**Design:** Each testimonial is a card with an emerald left border (3px), white background (or navy-800 on dark background variant), oversized quotation mark in Cormorant at 5rem in navy-700/10% opacity as background texture. Author line includes: photo, name, location, plan type, enrollment year.
-
-**Layout — desktop:** Three columns side by side.
-**Layout — mobile:** Single-card carousel with dots navigation. Swipeable. Arrow navigation optional.
-
-**Where testimonials appear:** This is the primary placement. A second appearance occurs adjacent to the final CTA section.
-
-**Motion:** On scroll entry, cards enter with 150ms stagger, `translateY(24px → 0)` + fade, 400ms ease-out. The emerald left border draws downward from top to bottom over 500ms after the card enters — a subtle animation that draws the eye to the credibility signal.
-
-**Accessibility:** Quote marks are decorative (`aria-hidden`). Author photo has descriptive `alt` text. On mobile, carousel has `role="region"`, `aria-label="Client testimonials"`, swipe and keyboard navigation.
+*(These sections are defined below for reference and will be fully detailed during Phase 2 implementation. Not built until Phase 1 is approved.)*
 
 ---
 
-### SECTION 9 — AGENT SHOWCASE
+### SECTION 5 — INDEPENDENT AGENCY *(New section)*
 
-**Why it exists:** The visitor is now one section away from the final CTA. Before they commit, they want to know: who will answer that call? This section puts faces, names, and credentials to the voice they're about to hear. It is the digital equivalent of seeing the doctor's diploma on the wall.
+**Why it exists:** This is a new section absent from the original blueprint. Most visitors — including seniors who have been choosing their own coverage for decades — do not understand what an independent insurance agency is or why it benefits them. Without this understanding, the differentiator "50+ carriers" is just a number. With it, that number becomes a profound reason to choose Pure Life over going directly to a carrier.
 
-**Psychological purpose:** Humanization. The entire previous experience has been building logical trust — credentials, logos, numbers, process. This section delivers emotional trust — the recognition of a human being. For seniors especially, knowing they are about to speak to a named, visible, licensed professional rather than an anonymous agent dramatically increases conversion.
+**Psychological purpose:** Education that creates preference. A visitor who understands the independent agency model will actively prefer it over a captive agent or a carrier's website — not because we told them to, but because they now understand why it serves their interests better.
 
-**Conversion goal:** Convert the remaining hesitant visitors. This section is not a CTA section itself — it is a conversion accelerant for the final CTA below.
+**Layout approach:** Two-column split on desktop. Left: the "before" (going direct to a carrier). Right: the "with Pure Life" (independent). The comparison is made without criticizing insurance companies — purely by contrast.
 
-**Section label:** 12px, uppercase, silver — "YOUR TEAM"
-**Headline:** Cormorant Garamond, Display MD, white — *"Licensed Agents, Ready for You."*
+**Five key benefits (each gets a brief treatment):**
 
-**Supporting copy:** Inter, 17px, silver-400:
-> "Every call is answered by a licensed insurance agent — not a call center, not an AI. A real person who knows your state's plans, knows the carriers, and knows how to find the right fit for your situation."
+1. **Access to multiple carriers** — "We compare plans from 50+ insurance companies, not just one."
+2. **Personalized recommendations** — "We ask about your doctors, your medications, and your budget before recommending anything."
+3. **Annual reviews** — "Every year before enrollment season, we review your plan and make sure it's still the best option."
+4. **Ongoing support** — "We're your advocate for as long as you're a client — not just during enrollment."
+5. **No additional cost** — "Our services are free to you. We're compensated by the carrier you choose, not by charging you a fee."
 
-**Three to four agent cards:**
-```
-┌─────────────────────────┐
-│                         │
-│  [Professional photo]   │
-│                         │
-│  Sarah M.               │
-│  Licensed Medicare      │
-│  Specialist             │
-│                         │
-│  ★ Licensed in 8 states │
-│  ★ Spanish & English    │
-│  ★ 7 years experience   │
-│                         │
-│  [Book a Free Call →]   │
-│                         │
-└─────────────────────────┘
-```
-
-**Design:** Agent photo in a circle with a silver shimmer ring on hover (echoing the logo bird's wings). Name in Plus Jakarta Sans 16px bold. Title in silver-400. Three credential bullets in 13px. "Book a Free Call" is a secondary ghost CTA — not emerald, because the primary CTA comes in the next section.
-
-**Desktop:** 3–4 cards in a row.
-**Mobile:** Horizontal scroll (snap scroll) or vertical stack.
-
-**Motion:** Cards fade in with 100ms stagger. On hover: `translateY(-3px)`, the silver ring animates. Photo slightly scales up (1.02), adding a sense of presence.
-
-**Where Agent Success is introduced:** This is the first mention of the agent team on the homepage. A second, brief introduction to the Agent Success Center (for recruiting) appears much later, in Section 13.
-
-**Accessibility:** Agent photos have descriptive alt text ("Sarah M., Licensed Medicare Specialist"). "Book a Free Call" links have aria-labels including the agent's name.
+**The final point — no additional cost — is the most important.** Most visitors assume working with an agent costs money. Removing this barrier is essential.
 
 ---
 
-### SECTION 10 — KNOWLEDGE CENTER INTRODUCTION
+### SECTION 6 — SERVICES OVERVIEW
 
-**Why it exists:** Not every visitor is ready to convert today. A visitor who is three months from turning 65 doesn't need a quote yet — they need to understand what Medicare is. A visitor who is helping their parent is doing research, not shopping. The Knowledge Center introduction says: "We have what you need, even if you're not ready to talk to an agent yet." It is the brand's act of generosity — and generosity converts better than pressure.
-
-**Psychological purpose:** Value before obligation. The Knowledge Center transforms the brand from a service provider into a trusted resource. Visitors who come back for the Knowledge Center convert at significantly higher rates than first-visit cold traffic, because they have a pre-existing relationship with the brand.
-
-**Conversion goal:** Drive visitors into the Knowledge Center (secondary conversion) and capture email leads through downloadable resources. Convert future traffic by establishing a content relationship now.
-
-**Section label:** 12px, uppercase, cyan — "KNOWLEDGE CENTER"
-**Headline:** Cormorant Garamond, Display MD, white — *"The Most Trusted Medicare Resource in Your Area."*
-
-**Supporting copy:** Inter, 17px, silver-400:
-> "Free guides, expert articles, downloadable checklists, and video explainers — built to help you make confident coverage decisions."
-
-**Layout — three featured article cards + one category overview:**
-
-```
-┌─────────────────────────┐  ┌─────────────────────────┐  ┌─────────────────────────┐
-│  [Category: Medicare]   │  │  [Category: Life Ins.]  │  │  [Category: Benefits]   │
-│                         │  │                         │  │                         │
-│  Turning 65 Complete    │  │  Final Expense          │  │  5 Government Benefits  │
-│  Medicare Guide         │  │  Insurance: What        │  │  Seniors Often Miss     │
-│                         │  │  It Covers & Why        │  │                         │
-│  Everything you need    │  │  It Matters             │  │  SNAP, Lifeline phones, │
-│  to know before your    │  │                         │  │  and more — many        │
-│  first Medicare         │  │  A clear guide for      │  │  seniors qualify and    │
-│  decision.              │  │  families planning      │  │  don't know it.         │
-│                         │  │  ahead.                 │  │                         │
-│  15 min read · PDF      │  │  8 min read             │  │  5 min read · Checklist │
-│                         │  │                         │  │                         │
-│  [Read Guide →]         │  │  [Read Article →]       │  │  [Read Article →]       │
-└─────────────────────────┘  └─────────────────────────┘  └─────────────────────────┘
-
-              [Explore All Resources →]   [Ask the AI Assistant →]
-```
-
-**The "Ask the AI Assistant" CTA** (emerald-secondary, cyan border): This is the first homepage appearance of the AI Knowledge Assistant. It is positioned here deliberately — in the context of educational content, an AI that answers questions feels natural and helpful rather than salesy.
-
-**Where the Knowledge Center is introduced:** This section, Section 10. It appears late enough that the visitor has already formed trust, but early enough that it lands before the final CTA — planting a seed of return visits.
-
-**Article card design:** Navy-800 background, thin silver top border (category accent color), category tag in 11px uppercase, article title in Plus Jakarta Sans 16px bold, excerpt in silver-400 13px, read time and content type badges at the bottom.
-
-**Desktop:** Three columns.
-**Mobile:** Vertical stack, first article fully visible, others partially visible — hinting at more without requiring a carousel.
-
-**Motion:** Cards stagger in at 120ms intervals, `translateY(20px → 0)` + fade, 400ms each. The "Explore All Resources" link underline traces right on hover.
-
-**Accessibility:** Article cards are linked with descriptive text. PDF badges include download indicator. "Ask the AI Assistant" button has aria-label including purpose.
+*(Unchanged from original blueprint — three service cards: Medicare, Life Insurance, Government Benefits.)*
 
 ---
 
-### SECTION 11 — TRUST ARCHITECTURE
+### SECTION 7 — HOW IT WORKS
 
-**Why it exists:** At this depth into the page (roughly 70–75% scroll), the visitors who remain are seriously evaluating Pure Life. This section presents the formal trust credentials for those who need institutional validation before acting.
-
-**Psychological purpose:** Compliance and safety signals that satisfy the due-diligence instinct. Not everyone needs this — but for the visitors who do, its absence would be noticed.
-
-**Layout — four trust modules in a row:**
-
-```
-┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
-│ [Lock icon] │  │ [Badge icon]│  │ [List icon] │  │ [CMS logo]  │
-│             │  │             │  │             │  │             │
-│ Your Data   │  │ Licensed &  │  │ 15 States   │  │ CMS         │
-│ Is Secure   │  │ Accredited  │  │ Licensed    │  │ Compliant   │
-│             │  │             │  │             │  │             │
-│ 256-bit SSL │  │ [BBB]       │  │ [State list]│  │ Medicare    │
-│ encryption  │  │ A+ Rating   │  │             │  │ approved    │
-│ on all data.│  │             │  │             │  │ agency      │
-└─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘
-```
-
-**Below the modules — CMS disclaimer text:**
-12px, silver-500, centered, max-width 700px:
-> "Pure Life Insurance Services LLC is an independent insurance agency. We are not affiliated with any government agency. Medicare has neither reviewed nor endorsed this information."
-
-**Motion:** Modules fade in simultaneously (no stagger — they belong together visually), 400ms on scroll entry.
-
-**Mobile:** 2×2 grid.
-
-**Accessibility:** All icons `aria-hidden`. Module text is semantic and readable by screen readers. Disclaimer text has appropriate reading contrast.
+*(Unchanged from original blueprint — three steps: Tell Us / We Compare / You Enroll.)*
 
 ---
 
-### SECTION 12 — MEDICAL PARTNERSHIPS
+### SECTION 8 — AGENT SHOWCASE *(Moved before Testimonials)*
 
-**Why it exists:** Community trust is different from brand trust. When visitors learn that local medical offices, clinics, and senior centers recommend Pure Life, it triggers a powerful trust by proxy. "If my doctor's office works with them, they must be legitimate."
+**The revision rationale:** People trust people before they trust reviews. A visitor who sees a face, a name, and a credential will read a testimonial with the knowledge that a real person behind this brand served the reviewer. The reverse order — testimonials then agents — feels like claim before evidence. The correct emotional sequence is: *Meet the team → Hear from their clients.*
 
-**Psychological purpose:** Third-party institutional validation. More powerful than a testimonial because it implies professional vetting rather than personal satisfaction.
+**Purpose:** Humanization before social proof. The agent showcase puts names and faces to the brand before asking the visitor to trust anonymous reviews.
 
-**Conversion goal:** Passive trust-building for the primary visitor. Secondary: expose the B2B opportunity for medical professionals who may be visiting.
-
-**Section label:** 12px, uppercase, silver — "COMMUNITY PARTNERSHIPS"
-**Headline:** Cormorant Garamond, Display SM, white — *"Trusted by Healthcare Providers in Your Community."*
-
-**Layout:**
-A horizontal strip with three partner type icons (medical cross, community building, financial graph) and a brief copy block, then a CTA for potential partners.
-
-```
-  [Medical icon]    [Community icon]    [Financial icon]
-  Medical Offices   Senior Centers      Financial Advisors
-
-  "We partner with healthcare providers and community organizations to bring
-  Medicare education directly to the people who need it."
-
-  [Become a Partner →]  ← ghost/secondary CTA, not emerald
-```
-
-**Visual:** If partner logos are available, show them in a soft-opacity row. If not, use the three category icons with brief partner-type descriptions.
-
-**Where Medical Partnerships are introduced:** This is their homepage introduction — Section 12. The visitor has already converted or is in the final evaluation stage. This section serves those who value community trust signals.
-
-**Desktop:** Two-column — text left, visual/icons right.
-**Mobile:** Stacked.
-
-**Motion:** Section fades in cleanly. Partner icons: subtle entrance stagger, 100ms each.
+*(Full specification unchanged from original blueprint.)*
 
 ---
 
-### SECTION 13 — AGENT SUCCESS CENTER (BRIEF)
+### SECTION 9 — TESTIMONIALS
 
-**Why it exists:** A small but valuable portion of homepage visitors are licensed insurance agents evaluating career opportunities. Ignoring this audience wastes their visit. A brief, dignified mention captures them without interrupting the primary consumer journey.
-
-**Psychological purpose:** Audience acknowledgment without disruption. This section is placed after all primary consumer content — it speaks to a second audience without confusing the primary one.
-
-**Conversion goal:** Capture prospective agent leads to the recruiting pipeline.
-
-**Treatment:** Visually distinct from the sections above — not a full-width section but a contained accent block, 80% width, centered, navy-800 background with silver shimmer border, generous padding.
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                                                                 │
-│  [Small icon: briefcase or agent silhouette]                    │
-│                                                                 │
-│  Are You a Licensed Insurance Agent?                            │
-│                                                                 │
-│  Join a team with modern technology, AI-powered lead tools,     │
-│  and a premium brand that sets you apart.                       │
-│                                                                 │
-│  [Explore the Agent Opportunity →]   ← ghost CTA, not emerald  │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-**Desktop + Mobile:** Same contained card, never full-bleed. It should feel like a sidebar note, not a competing page.
-
-**Motion:** Fades in. No special animation — it earns less visual attention than the consumer sections above.
+*(Moved to after Agent Showcase. Specification unchanged.)*
 
 ---
 
-### SECTION 14 — FINAL CTA
+### SECTIONS 10–14 — KNOWLEDGE CENTER, TRUST ARCHITECTURE, PARTNERSHIPS, AGENT SUCCESS, FINAL CTA
 
-**Why it exists:** The visitor has read everything. They have moved through the complete emotional journey. This is the closing handshake — the final, clear, unhurried invitation to take the next step.
-
-**Psychological purpose:** Commitment opportunity at peak readiness. Visitors who have scrolled this far are the highest-quality leads on the page. They are deliberate, engaged, and informed. This section must match their energy — confident and calm, not desperate.
-
-**Conversion goal:** Primary homepage conversion. This is the second full lead capture form (after the hero CTA).
-
-**Design — full-bleed, navy-950 background:**
-This section has a different, deeper atmosphere than the rest of the page — darker navy, no gradient orbs. It feels like a private room, a quiet conclusion to the page's story.
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                                                                         │
-│    *Ready to Find the Right Plan?*                                      │
-│                                                                         │
-│    It starts with a 15-minute conversation.                             │
-│    No pressure. No commitment. Just clarity.                            │
-│                                                                         │
-│    ┌──────────────┐  ┌──────────────┐  ┌──────────────┐               │
-│    │ First Name   │  │ Phone Number │  │ ZIP Code     │               │
-│    └──────────────┘  └──────────────┘  └──────────────┘               │
-│                                                                         │
-│                   [Get My Free Quote →]                                 │
-│                                                                         │
-│    🔒 Your information is secure and never sold.                        │
-│    We'll call you back in under 30 seconds.                             │
-│                                                                         │
-│    ─────────────────────────────────────────────────────────────────   │
-│                                                                         │
-│    Prefer to call? (800) XXX-XXXX                                       │
-│    Available Monday–Saturday, 8am–7pm [timezone]                        │
-│                                                                         │
-└─────────────────────────────────────────────────────────────────────────┘
-```
-
-**The copy "No pressure. No commitment. Just clarity."** directly addresses the primary conversion barrier for insurance leads — the fear of being sold to.
-
-**A single testimonial** appears to the right of the form on desktop (left on mobile: above the form):
-The most relatable testimonial from Section 8, reduced to a two-sentence pull quote, no photo — just the quote and attribution. This is the "last mile" social proof placement.
-
-**Where the phone number appears (final):** This is its fourth and most prominent homepage placement: large, clear, with availability hours. The phone number on this page appears in: navigation, hero trust strip (as text), How It Works "call us directly" (secondary), and this final section (featured).
-
-**Desktop:** Form centered, max-width 680px. Testimonial pull-quote to the right in a contained block.
-**Mobile:** Stacked. Form full-width. Testimonial above the form (emotion before action).
-
-**Motion:** Section entrance: headline fades-up, 500ms. Form fields appear in a single fade (no stagger — this is not a time for theater), 400ms delay. Submit button: last to appear, 600ms delay.
-
-**Accessibility:** Form fields have explicit labels. The phone number is a semantic `<a href="tel:...">`. Submit button has a specific aria-label.
-
-**SEO:** This section's heading contains a natural keyword phrase. The phone number is crawlable text (not an image).
+*(Unchanged from original blueprint. Full specifications apply.)*
 
 ---
 
-### SECTION 15 — FOOTER
-
-(Already defined in SITE_ARCHITECTURE.md — implemented according to that specification.)
-
-**Homepage-specific footer note:** The newsletter signup in the footer is the fourth and final lead capture on the homepage — email only, lower friction than a phone capture. It exists for visitors who are interested but not yet ready to speak to an agent.
-
----
-
-## CTA Placement Summary
+## CTA Placement Summary *(Revised)*
 
 | Placement | Section | Type | Goal |
 |---|---|---|---|
 | 1 | Hero | Emerald primary button | Immediate high-intent capture |
-| 2 | How It Works | Emerald primary button | Post-process-clarity capture |
-| 3 | Knowledge Center | AI Assistant ghost button | AI discovery + soft lead |
-| 4 | Final CTA | Full form + Emerald submit | Deep-funnel primary capture |
-| 5 | Footer | Email newsletter input | Long-cycle nurture capture |
+| 2 | Audience Selector (personalized strip) | Ghost/secondary | Path-specific routing |
+| 3 | AI Assistant Introduction | Ghost/cyan outline | AI engagement + pre-qualification |
+| 4 | How It Works | Emerald primary button | Post-process-clarity capture |
+| 5 | Final CTA | Full form + Emerald submit | Deep-funnel primary capture |
+| 6 | Footer | Email newsletter | Long-cycle nurture |
 
-**Phone number placements:** Navigation · Hero trust strip · How It Works · Final CTA · Footer utility bar
-
----
-
-## Motion Choreography Summary
-
-The homepage's animation follows a single principle: **motion that earns attention earns trust, motion that demands attention wastes it.**
-
-| Section | Motion | Timing |
-|---|---|---|
-| Navigation | Fade-in stagger, glass transition on scroll | 80ms stagger, 400ms each |
-| Hero | Fade + rise, ambient orb drift | 700ms headline, 45s ambient loop |
-| Audience cards | Fade + rise stagger | 120ms stagger, 500ms |
-| Credibility bar | Counter animation on viewport entry | 1200ms count-up, ease-out |
-| Problem section | Fade + left/right translate | 500ms |
-| Services | Fade + rise stagger, shimmer border | 150ms stagger, 500ms |
-| How It Works | Line draw, step appear sequence | 1000ms line, 333ms per step |
-| Differentiators | Column translate (left/right) | 400ms |
-| Testimonials | Fade + rise stagger, border draw | 150ms stagger, 500ms |
-| Agents | Fade stagger, hover ring | 100ms stagger |
-| Knowledge Center | Fade + rise stagger | 120ms stagger |
-| Trust modules | Simultaneous fade | 400ms |
-| Partnerships | Clean fade | 400ms |
-| Final CTA | Fade + rise, form last | 500ms headline, 600ms button |
-
-**Reduced motion behavior:** All translate/scale animations become instant fades. Counter animation shows final value immediately. Ambient orb drift is disabled. Line-draw animation is replaced by all steps appearing simultaneously.
+**Phone number placements:** Navigation · Hero trust strip · How It Works ("or call us directly") · Final CTA · Footer utility bar
 
 ---
 
-## Accessibility Summary
+## Phase 1 Section Specifications Checklist
 
-| Consideration | Implementation |
-|---|---|
-| Heading hierarchy | H1 in hero, H2 for section titles, H3 for card titles |
-| Focus order | Matches visual reading order exactly |
-| Keyboard navigation | All interactive elements reachable, visible focus rings (cyan, 2px, 3px offset) |
-| Screen reader | ARIA landmarks, descriptive labels, live regions for dynamic content |
-| Color contrast | All text exceeds WCAG AA; primary text targets AAA |
-| Reduced motion | `@media (prefers-reduced-motion: no-preference)` wraps all transforms |
-| Form labels | Explicit `<label>` elements, no placeholder-only fields |
-| Phone numbers | All `<a href="tel:...">` — screen reader announces as callable |
-| Images | Descriptive alt text; decorative elements are `aria-hidden` |
-| Touch targets | Minimum 48×48px on all interactive elements |
+Before Phase 1 is submitted for approval, each section must satisfy:
+
+**Navigation:**
+- [ ] Transparent on load, glass on scroll
+- [ ] Phone number always visible
+- [ ] Emerald CTA persistent
+- [ ] Mega menu keyboard navigable
+- [ ] Mobile drawer with focus trap
+- [ ] Skip-to-content link present
+
+**Hero:**
+- [ ] Visitor-first headline (Option A or revised)
+- [ ] Glass panel on navy-950 background
+- [ ] Wing gradient arcs (silver, abstract, lower-center)
+- [ ] Cyan glow (radial, upper-right)
+- [ ] Ambient orb drift (50-second loop, disabled on reduced motion)
+- [ ] Sequential entrance animation (7 elements)
+- [ ] Emerald primary + ghost secondary CTAs
+- [ ] Trust strip below CTAs
+- [ ] Fully responsive (desktop / tablet / mobile)
+- [ ] H1 on headline
+- [ ] All decorative elements aria-hidden
+
+**Audience Selector:**
+- [ ] All 6 paths present with correct icons
+- [ ] Selection state: selected card glows, others dim
+- [ ] Personalized content strip reveals on selection
+- [ ] Cards are interactive elements (button or anchor), not divs
+- [ ] aria-pressed on selected card
+- [ ] aria-live on content strip
+- [ ] 3×2 grid desktop, 2×3 tablet, 1×6 mobile
+
+**Credibility Bar:**
+- [ ] Carrier logos (SVG or text fallback)
+- [ ] 4 stats with counter animation
+- [ ] Counter fires once on viewport entry, never replays
+- [ ] Reduced motion: final value immediate
+- [ ] Accessible alt text and aria-labels on all stats
 
 ---
 
-## SEO Summary
+## Emotional Arc Confirmation *(Revised)*
 
-| Element | Treatment |
-|---|---|
-| Title tag | "Medicare & Life Insurance Plans \| Pure Life Insurance Services" |
-| Meta description | 155 chars, includes primary keywords and value prop |
-| H1 | One only: hero headline containing "Medicare Coverage" |
-| H2s | Section titles containing keyword variations |
-| Schema markup | `Organization`, `LocalBusiness`, `FAQPage` (if FAQ section added) |
-| Internal links | Services, Knowledge Center articles, Agent profiles |
-| Canonical | `<link rel="canonical" href="https://purelifeis.com/">` |
-| hreflang | Points to `/es/` Spanish homepage |
-| Page speed | Above-fold content server-rendered; animations JS-deferred; images lazy-loaded below fold |
-| OG / Twitter Card | Custom homepage image with logo + tagline |
-
----
-
-## Summary: Every Section Earns Its Place
-
-| Section | What it earns |
-|---|---|
-| Navigation | Orientation + always-available action |
-| Hero | First impression — pattern interruption + primary CTA |
-| Audience Selector | Personalization at scale — self-segmentation |
-| Social Proof Bar | Institutional legitimacy — before it's demanded |
-| The Problem | Rapport — "they understand what I've been through" |
-| Services | Orientation — "my situation is covered" |
-| How It Works | Fear reduction — "I know what happens next" |
-| Differentiators | Objection handling — "this is different from what I expect" |
-| Testimonials | Social proof — "it worked for someone like me" |
-| Agent Showcase | Human trust — "a real person will answer" |
-| Knowledge Center | Generosity — value before obligation |
-| Trust Architecture | Formal validation — credentials for due-diligence visitors |
-| Medical Partnerships | Community trust — third-party institutional validation |
-| Agent Success | Audience acknowledgment — recruiting without disrupting |
-| Final CTA | Conversion at peak readiness — calm, clear closing handshake |
+```
+Section 1 — Hero:               CONFUSION → RECOGNITION
+Section 2 — Audience Selector:  RECOGNITION → RELIEF
+Section 3 — AI Introduction:    RELIEF → CURIOSITY
+Section 4 — Credibility Bar:    CURIOSITY → CREDIBILITY
+Section 5 — Independent Agency: CREDIBILITY → UNDERSTANDING
+Section 6 — Services:           UNDERSTANDING (deepens)
+Section 7 — How It Works:       UNDERSTANDING → PROCESS CLARITY
+Section 8 — Agent Showcase:     PROCESS CLARITY → HUMAN TRUST
+Section 9 — Testimonials:       HUMAN TRUST → SOCIAL PROOF
+Section 10 — Knowledge Center:  SOCIAL PROOF → CONFIDENCE
+Section 11 — Trust Architecture: CONFIDENCE → VALIDATION
+Section 12 — Partnerships:      VALIDATION → COMMUNITY TRUST
+Section 13 — Agent Success:     (secondary audience)
+Section 14 — Final CTA:         COMMUNITY TRUST → ACTION
+```
 
 ---
 
 > **APPROVAL CHECKPOINT**
 >
-> This blueprint defines the complete homepage design at the strategic, psychological, and interaction level.
-> No React code, JSX, or components will be written until this blueprint is approved.
+> All 8 revisions have been incorporated. The blueprint is updated and ready for review.
 >
-> Please review, request changes, or confirm readiness to begin implementation.
+> Phase 1 build scope is defined: Navigation + Hero + Audience Selector + Credibility Bar.
+>
+> No React code, JSX, or components will be written until this revised blueprint is approved.
