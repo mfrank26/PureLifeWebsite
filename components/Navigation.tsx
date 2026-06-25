@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
+import Image from "next/image";
 
 /* ── Data ──────────────────────────────────────────────────────────── */
 
@@ -467,17 +468,17 @@ export function Navigation() {
           className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-[76px]"
           aria-label="Main navigation"
         >
-          {/* Logo — ~22% larger */}
-          <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-navy-600 flex items-center justify-center">
-              <span className="text-white font-display font-bold text-base italic">P</span>
-            </div>
-            <span className="font-ui font-bold text-white text-[1.125rem] leading-none">
-              Pure Life
-              <span className="block text-[11px] font-normal tracking-[0.12em] uppercase text-silver-400 mt-0.5">
-                Insurance Services
-              </span>
-            </span>
+          {/* Logo */}
+          <Link href="/" className="flex items-center flex-shrink-0" aria-label="Pure Life Insurance Services — home">
+            <Image
+              src="/images/pure-life-logo.png"
+              alt="Pure Life Insurance Services LLC"
+              width={47}
+              height={48}
+              priority
+              className="object-contain"
+              style={{ height: "48px", width: "auto" }}
+            />
           </Link>
 
           {/* Desktop nav links */}
