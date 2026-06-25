@@ -96,7 +96,7 @@ export function Hero() {
           className="absolute inset-0"
           style={{
             zIndex: 1,
-            transform: "scale(1.06) translateX(2.5%)",
+            transform: "scale(1.10) translateX(4.5%)",
             transformOrigin: "50% 50%",
           }}
           aria-hidden="true"
