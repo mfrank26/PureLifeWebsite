@@ -477,7 +477,7 @@ export function Navigation() {
               height={90}
               priority
               className="object-contain"
-              style={{ height: "64px", width: "auto" }}
+              style={{ height: "72px", width: "auto" }}
             />
           </Link>
 
