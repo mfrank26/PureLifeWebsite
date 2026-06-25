@@ -108,14 +108,14 @@ export function Hero() {
               ? {}
               : {
                   opacity: 1,
-                  scale: [1, 1.03, 1],
-                  x: [0, 5, 0],
+                  scale: [1, 1.03],
+                  x: [0, 5],
                 }
             }
             transition={reduced ? {} : {
               opacity: { duration: 1.8, ease: "easeOut" },
-              scale: { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 1.8, times: [0, 0.5, 1] },
-              x:     { duration: 22, repeat: Infinity, ease: "easeInOut", delay: 1.8, times: [0, 0.5, 1] },
+              scale: { duration: 22, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: 1.8 },
+              x:     { duration: 22, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: 1.8 },
             }}
           >
             <video
@@ -175,12 +175,12 @@ export function Hero() {
           style={{ paddingTop: "110px", paddingBottom: "64px" }}
         >
           {/* Copy panel — constrained left on desktop, full-width on mobile */}
-          <div className="w-full lg:w-auto lg:max-w-[min(420px,35%)]">
+          <div className="w-full lg:w-auto lg:max-w-[min(460px,38%)]">
             <motion.div
-              className="glass-panel-hero rounded-2xl p-7 sm:p-9 lg:p-10"
+              className="glass-panel-hero rounded-2xl p-6 sm:p-8 lg:p-8"
               style={{
-                background: "rgba(4,16,31,0.62)",
-                border: "1px solid rgba(255,255,255,0.13)",
+                background: "rgba(4,16,31,0.52)",
+                border: "1px solid rgba(255,255,255,0.09)",
               }}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -203,7 +203,7 @@ export function Hero() {
                   style={reduced ? {} : { animation: "pulse-glow 2s ease-in-out infinite" }}
                 />
                 <span className="font-ui text-[11px] font-semibold uppercase tracking-[0.1em] text-silver-300">
-                  Licensed Medicare &amp; Life Insurance Advisors&nbsp;&nbsp;·&nbsp;&nbsp;15 States
+                  Medicare&nbsp;&nbsp;·&nbsp;&nbsp;Life Insurance&nbsp;&nbsp;·&nbsp;&nbsp;Government Benefits
                 </span>
               </motion.div>
 
