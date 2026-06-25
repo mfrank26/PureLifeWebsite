@@ -175,7 +175,7 @@ export function Hero() {
           style={{ paddingTop: "110px", paddingBottom: "64px" }}
         >
           {/* Copy panel — constrained left on desktop, full-width on mobile */}
-          <div className="w-full lg:w-auto lg:max-w-[min(480px,40%)]">
+          <div className="w-full lg:w-auto lg:max-w-[min(420px,35%)]">
             <motion.div
               className="glass-panel-hero rounded-2xl p-7 sm:p-9 lg:p-10"
               style={{
@@ -210,8 +210,8 @@ export function Hero() {
               {/* Headline */}
               <motion.h1
                 id="hero-headline"
-                className="font-display font-semibold italic leading-[1.07] tracking-[-0.02em] text-white mb-6 text-balance"
-                style={{ fontSize: "clamp(2.2rem,4.8vw,4rem)" }}
+                className="font-display font-semibold italic leading-[1.1] tracking-[-0.02em] text-white mb-6"
+                style={{ fontSize: "clamp(1.9rem,3.2vw,2.9rem)" }}
                 variants={fadeUp(0.34, 0.75)}
                 initial="hidden"
                 animate="visible"
@@ -241,7 +241,7 @@ export function Hero() {
                 initial="hidden"
                 animate="visible"
               >
-                ✓ Independent agency representing 50+ insurance carriers — not tied to any single insurance company.
+                <span style={{ color: "#34D399", fontWeight: 700 }}>✓</span>{" "}Independent agency representing 50+ insurance carriers — not tied to any single insurance company.
               </motion.p>
 
               {/* CTAs */}
@@ -279,7 +279,7 @@ export function Hero() {
         </div>
 
         {/* ── 5. TRUST CARD — lower-right corner, desktop only ── */}
-        <div className="absolute bottom-10 right-8 lg:bottom-14 lg:right-12 hidden lg:block z-20">
+        <div className="absolute bottom-10 right-8 lg:bottom-24 lg:right-12 hidden lg:block z-20">
           <TrustCard reduced={reduced} />
         </div>
 
