@@ -2,39 +2,56 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { Menu, X, Phone, ChevronDown, ArrowRight } from "lucide-react";
+import {
+  Menu, X, Phone, ChevronDown, ArrowRight,
+  Shield, ShieldCheck, Pill, DollarSign, SlidersHorizontal,
+  Clock, RefreshCw, Heart, Home, CheckCircle,
+  Activity, Users, Leaf, LayoutGrid,
+} from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import type { LucideIcon } from "lucide-react";
 
 /* ── Data ──────────────────────────────────────────────────────────── */
 
-const megaMenuData = {
+interface MenuItem {
+  label: string;
+  href: string;
+  desc: string;
+  icon: LucideIcon;
+}
+
+const megaMenuData: {
+  medicare: { title: string; items: MenuItem[] };
+  lifeInsurance: { title: string; items: MenuItem[] };
+  benefits: { title: string; items: MenuItem[] };
+} = {
   medicare: {
     title: "Medicare",
     items: [
-      { label: "Medicare Advantage", href: "/medicare/advantage", desc: "All-in-one plan covering Parts A & B" },
-      { label: "Medicare Supplement", href: "/medicare/supplement", desc: "Fill the gaps in Original Medicare" },
-      { label: "Medicare Part D", href: "/medicare/part-d", desc: "Standalone prescription drug coverage" },
-      { label: "Medicare Savings Programs", href: "/medicare/savings-programs", desc: "Help with premiums and cost-sharing" },
-      { label: "Compare Plans", href: "/medicare/compare", desc: "Side-by-side plan comparison" },
+      { label: "Medicare Advantage", href: "/medicare/advantage", desc: "All-in-one plan covering Parts A & B", icon: Shield },
+      { label: "Medicare Supplement", href: "/medicare/supplement", desc: "Fill the gaps in Original Medicare", icon: ShieldCheck },
+      { label: "Medicare Part D", href: "/medicare/part-d", desc: "Standalone prescription drug coverage", icon: Pill },
+      { label: "Medicare Savings Programs", href: "/medicare/savings-programs", desc: "Help with premiums and cost-sharing", icon: DollarSign },
+      { label: "Compare Plans", href: "/medicare/compare", desc: "Side-by-side plan comparison", icon: SlidersHorizontal },
     ],
   },
   lifeInsurance: {
     title: "Life Insurance",
     items: [
-      { label: "Term Life Insurance", href: "/life-insurance/term", desc: "Affordable coverage for a set period" },
-      { label: "Whole Life Insurance", href: "/life-insurance/whole", desc: "Permanent coverage with cash value" },
-      { label: "Final Expense", href: "/life-insurance/final-expense", desc: "Cover end-of-life costs simply" },
-      { label: "Mortgage Protection", href: "/life-insurance/mortgage-protection", desc: "Keep your family in their home" },
-      { label: "No Exam Coverage", href: "/life-insurance/no-exam", desc: "Coverage without a medical exam" },
+      { label: "Term Life Insurance", href: "/life-insurance/term", desc: "Affordable coverage for a set period", icon: Clock },
+      { label: "Whole Life Insurance", href: "/life-insurance/whole", desc: "Permanent coverage with cash value", icon: RefreshCw },
+      { label: "Final Expense", href: "/life-insurance/final-expense", desc: "Cover end-of-life costs simply", icon: Heart },
+      { label: "Mortgage Protection", href: "/life-insurance/mortgage-protection", desc: "Keep your family in their home", icon: Home },
+      { label: "No Exam Coverage", href: "/life-insurance/no-exam", desc: "Coverage without a medical exam", icon: CheckCircle },
     ],
   },
   benefits: {
     title: "Government Benefits",
     items: [
-      { label: "ACA Marketplace", href: "/benefits/aca-marketplace", desc: "Health coverage before Medicare age" },
-      { label: "Medicaid", href: "/benefits/medicaid", desc: "Low-income health coverage" },
-      { label: "SNAP Benefits", href: "/benefits/snap", desc: "Food assistance you may qualify for" },
-      { label: "All Programs", href: "/benefits/programs", desc: "Full directory of benefit programs" },
+      { label: "ACA Marketplace", href: "/benefits/aca-marketplace", desc: "Health coverage before Medicare age", icon: Activity },
+      { label: "Medicaid", href: "/benefits/medicaid", desc: "Low-income health coverage", icon: Users },
+      { label: "SNAP Benefits", href: "/benefits/snap", desc: "Food assistance you may qualify for", icon: Leaf },
+      { label: "All Programs", href: "/benefits/programs", desc: "Full directory of benefit programs", icon: LayoutGrid },
     ],
   },
 };
@@ -53,16 +70,46 @@ interface MegaMenuProps {
 
 /* ── MegaMenu ──────────────────────────────────────────────────────── */
 
+function MenuItemLink({ item, onClose }: { item: MenuItem; onClose: () => void }) {
+  const Icon = item.icon;
+  return (
+    <Link
+      href={item.href}
+      onClick={onClose}
+      className="group flex items-start gap-3 px-3 py-2.5 rounded-xl transition-colors hover:bg-white/[0.06]"
+    >
+      <div
+        className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center mt-0.5 transition-colors"
+        style={{ background: "rgba(43,200,232,0.08)" }}
+      >
+        <Icon className="w-[15px] h-[15px] text-cyan-500 group-hover:text-cyan-400 transition-colors" aria-hidden="true" />
+      </div>
+      <div>
+        <span className="block font-ui text-sm font-medium text-white group-hover:text-cyan-300 transition-colors">
+          {item.label}
+        </span>
+        <span className="block text-[12px] text-silver-500 mt-0.5 leading-relaxed">{item.desc}</span>
+      </div>
+    </Link>
+  );
+}
+
 function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -8 }}
+          initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute top-full left-0 right-0 glass-nav shadow-2xl"
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute top-full left-0 right-0 shadow-2xl"
+          style={{
+            background: "rgba(8, 18, 36, 0.96)",
+            backdropFilter: "blur(28px) saturate(180%)",
+            WebkitBackdropFilter: "blur(28px) saturate(180%)",
+            borderBottom: "1px solid rgba(255,255,255,0.07)",
+          }}
           onMouseLeave={onClose}
           role="dialog"
           aria-label="Services navigation"
@@ -71,22 +118,13 @@ function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
             <div className="grid grid-cols-4 gap-8">
               {/* Medicare */}
               <div>
-                <p className="font-ui text-xs font-semibold uppercase tracking-[0.08em] text-cyan-500 mb-4">
+                <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.1em] text-cyan-500 mb-4 px-3">
                   {megaMenuData.medicare.title}
                 </p>
-                <ul className="space-y-1">
+                <ul className="space-y-0.5">
                   {megaMenuData.medicare.items.map((item) => (
                     <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={onClose}
-                        className="group block px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
-                      >
-                        <span className="block font-ui text-sm font-medium text-white group-hover:text-cyan-400 transition-colors">
-                          {item.label}
-                        </span>
-                        <span className="block text-xs text-silver-500 mt-0.5">{item.desc}</span>
-                      </Link>
+                      <MenuItemLink item={item} onClose={onClose} />
                     </li>
                   ))}
                 </ul>
@@ -94,22 +132,13 @@ function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
 
               {/* Life Insurance */}
               <div>
-                <p className="font-ui text-xs font-semibold uppercase tracking-[0.08em] text-cyan-500 mb-4">
+                <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.1em] text-cyan-500 mb-4 px-3">
                   {megaMenuData.lifeInsurance.title}
                 </p>
-                <ul className="space-y-1">
+                <ul className="space-y-0.5">
                   {megaMenuData.lifeInsurance.items.map((item) => (
                     <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={onClose}
-                        className="group block px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
-                      >
-                        <span className="block font-ui text-sm font-medium text-white group-hover:text-cyan-400 transition-colors">
-                          {item.label}
-                        </span>
-                        <span className="block text-xs text-silver-500 mt-0.5">{item.desc}</span>
-                      </Link>
+                      <MenuItemLink item={item} onClose={onClose} />
                     </li>
                   ))}
                 </ul>
@@ -117,38 +146,29 @@ function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
 
               {/* Government Benefits */}
               <div>
-                <p className="font-ui text-xs font-semibold uppercase tracking-[0.08em] text-cyan-500 mb-4">
+                <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.1em] text-cyan-500 mb-4 px-3">
                   {megaMenuData.benefits.title}
                 </p>
-                <ul className="space-y-1">
+                <ul className="space-y-0.5">
                   {megaMenuData.benefits.items.map((item) => (
                     <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={onClose}
-                        className="group block px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
-                      >
-                        <span className="block font-ui text-sm font-medium text-white group-hover:text-cyan-400 transition-colors">
-                          {item.label}
-                        </span>
-                        <span className="block text-xs text-silver-500 mt-0.5">{item.desc}</span>
-                      </Link>
+                      <MenuItemLink item={item} onClose={onClose} />
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* Speak with an agent */}
-              <div className="border-l border-white/8 pl-8">
-                <p className="font-ui text-xs font-semibold uppercase tracking-[0.08em] text-silver-400 mb-4">
+              <div style={{ borderLeft: "1px solid rgba(255,255,255,0.07)", paddingLeft: "2rem" }}>
+                <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.1em] text-silver-400 mb-4">
                   Speak with an Agent
                 </p>
-                <p className="text-sm text-silver-400 mb-4 leading-relaxed">
-                  Questions? Our licensed agents answer in under 30 seconds.
+                <p className="text-[13px] text-silver-400 mb-4 leading-relaxed">
+                  Questions? Our licensed advisors answer in under 30 seconds.
                 </p>
                 <a
                   href="tel:8001234567"
-                  className="block font-ui text-xl font-bold text-white hover:text-cyan-400 transition-colors mb-4"
+                  className="block font-ui text-xl font-bold text-white mb-4 nav-link-glow"
                 >
                   (800) XXX-XXXX
                 </a>
@@ -160,8 +180,8 @@ function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                   Schedule a Call
                 </Link>
 
-                <div className="mt-6 pt-6 border-t border-white/8">
-                  <p className="font-ui text-xs font-semibold uppercase tracking-[0.08em] text-silver-400 mb-3">
+                <div className="mt-6 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+                  <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.1em] text-silver-400 mb-3">
                     Featured Resources
                   </p>
                   <ul className="space-y-2">
@@ -170,9 +190,9 @@ function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                         <Link
                           href={r.href}
                           onClick={onClose}
-                          className="group flex items-center gap-2 text-sm text-silver-400 hover:text-cyan-400 transition-colors"
+                          className="group flex items-center gap-2 text-[13px] text-silver-400 nav-link-glow"
                         >
-                          <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                           {r.label}
                         </Link>
                       </li>
@@ -201,7 +221,6 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
   const [lifeOpen, setLifeOpen] = useState(false);
   const [benefitsOpen, setBenefitsOpen] = useState(false);
 
-  // Close on Escape
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -210,7 +229,6 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
     return () => document.removeEventListener("keydown", handleKey);
   }, [isOpen, onClose]);
 
-  // Prevent body scroll
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -231,10 +249,10 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
     isOpen: boolean;
     toggle: () => void;
   }) => (
-    <div className="border-b border-white/8">
+    <div style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
       <button
         onClick={toggle}
-        className="w-full flex items-center justify-between px-6 py-4 font-ui font-medium text-white hover:text-cyan-400 transition-colors"
+        className="w-full flex items-center justify-between px-6 py-4 font-ui font-medium text-white nav-link-glow"
         aria-expanded={open}
       >
         {title}
@@ -257,7 +275,8 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
                   key={item.href}
                   href={item.href}
                   onClick={onClose}
-                  className="block py-2 pl-3 text-sm text-silver-400 hover:text-white transition-colors border-l border-white/10 hover:border-cyan-500"
+                  className="block py-2 pl-3 text-sm text-silver-400 hover:text-white transition-colors"
+                  style={{ borderLeft: "1px solid rgba(255,255,255,0.1)" }}
                 >
                   {item.label}
                 </Link>
@@ -273,7 +292,6 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -284,7 +302,6 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
             aria-hidden="true"
           />
 
-          {/* Drawer */}
           <motion.div
             ref={drawerRef}
             initial={{ x: "100%" }}
@@ -297,8 +314,10 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
             aria-label="Mobile navigation"
             aria-modal="true"
           >
-            {/* Drawer header */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-white/8">
+            <div
+              className="flex items-center justify-between px-6 py-5"
+              style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+            >
               <a
                 href="tel:8001234567"
                 className="flex items-center gap-2 font-ui text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
@@ -315,7 +334,6 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
               </button>
             </div>
 
-            {/* Nav links */}
             <nav className="flex-1 overflow-y-auto" aria-label="Mobile navigation">
               <AccordionSection
                 title="Medicare"
@@ -335,36 +353,38 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
                 isOpen={benefitsOpen}
                 toggle={() => setBenefitsOpen((v) => !v)}
               />
-              <div className="border-b border-white/8">
+              <div style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
                 <Link
                   href="/knowledge"
                   onClick={onClose}
-                  className="block px-6 py-4 font-ui font-medium text-white hover:text-cyan-400 transition-colors"
+                  className="block px-6 py-4 font-ui font-medium text-white nav-link-glow"
                 >
-                  Knowledge Center
+                  Learning Center
                 </Link>
               </div>
-              <div className="border-b border-white/8">
+              <div style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
                 <Link
                   href="/partners"
                   onClick={onClose}
-                  className="block px-6 py-4 font-ui font-medium text-white hover:text-cyan-400 transition-colors"
+                  className="block px-6 py-4 font-ui font-medium text-white nav-link-glow"
                 >
                   Partners
                 </Link>
               </div>
-              <div className="border-b border-white/8">
+              <div style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
                 <Link
                   href="/agents"
                   onClick={onClose}
-                  className="block px-6 py-4 font-ui font-medium text-white hover:text-cyan-400 transition-colors"
+                  className="block px-6 py-4 font-ui font-medium text-white nav-link-glow"
                 >
                   Agents
                 </Link>
               </div>
 
-              {/* Language toggle */}
-              <div className="px-6 py-4 border-b border-white/8 flex items-center gap-3">
+              <div
+                className="px-6 py-4 flex items-center gap-3"
+                style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+              >
                 <span className="font-ui text-xs uppercase tracking-widest text-silver-400">Language:</span>
                 <button className="font-ui text-sm font-semibold text-white">EN</button>
                 <span className="text-silver-600">|</span>
@@ -377,8 +397,7 @@ function MobileDrawer({ isOpen, onClose }: DrawerProps) {
               </div>
             </nav>
 
-            {/* Drawer CTA */}
-            <div className="p-6 border-t border-white/8">
+            <div className="p-6" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
               <Link href="/quote" onClick={onClose} className="btn-emerald w-full justify-center">
                 Get My Free Quote
                 <ArrowRight className="w-4 h-4" />
@@ -405,7 +424,6 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mega menu on Escape
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMegaOpen(false);
@@ -425,7 +443,6 @@ export function Navigation() {
 
   return (
     <>
-      {/* Skip to content */}
       <a
         href="#main-content"
         className="fixed top-4 left-4 z-[100] px-4 py-2 bg-cyan-500 text-navy-950 font-ui font-semibold text-sm rounded-lg
@@ -440,17 +457,17 @@ export function Navigation() {
         }`}
       >
         <nav
-          className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-[72px]"
+          className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-[76px]"
           aria-label="Main navigation"
         >
-          {/* Logo */}
+          {/* Logo — ~22% larger */}
           <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-navy-600 flex items-center justify-center">
-              <span className="text-white font-display font-bold text-sm italic">P</span>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-navy-600 flex items-center justify-center">
+              <span className="text-white font-display font-bold text-base italic">P</span>
             </div>
-            <span className="font-ui font-bold text-white text-lg leading-none">
+            <span className="font-ui font-bold text-white text-[1.125rem] leading-none">
               Pure Life
-              <span className="block text-[10px] font-normal tracking-[0.12em] uppercase text-silver-400 mt-0.5">
+              <span className="block text-[11px] font-normal tracking-[0.12em] uppercase text-silver-400 mt-0.5">
                 Insurance Services
               </span>
             </span>
@@ -458,10 +475,9 @@ export function Navigation() {
 
           {/* Desktop nav links */}
           <ul className="hidden lg:flex items-center gap-1" role="list">
-            {/* Services with mega menu */}
             <li>
               <button
-                className="flex items-center gap-1.5 px-4 py-2 font-ui text-[15px] font-medium text-silver-300 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                className="flex items-center gap-1.5 px-4 py-2 font-ui text-[15px] font-medium text-silver-300 rounded-lg hover:bg-white/[0.06] nav-link-glow"
                 onMouseEnter={openMega}
                 onMouseLeave={closeMega}
                 onClick={() => setMegaOpen((v) => !v)}
@@ -475,14 +491,14 @@ export function Navigation() {
               </button>
             </li>
             {[
-              { label: "Knowledge Center", href: "/knowledge" },
+              { label: "Learning Center", href: "/knowledge" },
               { label: "Partners", href: "/partners" },
               { label: "Agents", href: "/agents" },
             ].map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="px-4 py-2 font-ui text-[15px] font-medium text-silver-300 hover:text-white transition-colors rounded-lg hover:bg-white/5 block"
+                  className="px-4 py-2 font-ui text-[15px] font-medium text-silver-300 rounded-lg hover:bg-white/[0.06] block nav-link-glow"
                 >
                   {link.label}
                 </Link>
@@ -492,7 +508,6 @@ export function Navigation() {
 
           {/* Desktop right side */}
           <div className="hidden lg:flex items-center gap-4">
-            {/* Language toggle */}
             <div className="flex items-center gap-2 font-ui text-[13px]">
               <button className="font-semibold text-white">EN</button>
               <span className="text-silver-600">|</span>
@@ -501,19 +516,17 @@ export function Navigation() {
               </Link>
             </div>
 
-            {/* Phone */}
             <a
               href="tel:8001234567"
-              className="flex items-center gap-2 font-ui text-[14px] font-medium text-silver-300 hover:text-white transition-colors"
+              className="flex items-center gap-2 font-ui text-[14px] font-medium text-silver-300 nav-link-glow"
             >
               <Phone className="w-3.5 h-3.5" />
               (800) XXX-XXXX
             </a>
 
-            {/* CTA */}
             <Link href="/quote" className="btn-emerald text-sm px-5 py-2.5 min-h-0 min-w-0 gap-1.5">
               Get My Free Quote
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
@@ -538,13 +551,11 @@ export function Navigation() {
           </div>
         </nav>
 
-        {/* Mega menu */}
         <div onMouseEnter={openMega} onMouseLeave={closeMega}>
           <MegaMenu isOpen={megaOpen} onClose={() => setMegaOpen(false)} />
         </div>
       </header>
 
-      {/* Mobile drawer */}
       <MobileDrawer isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>
   );
