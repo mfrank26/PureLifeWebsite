@@ -88,7 +88,7 @@ export function Hero() {
       {/* ── Cinematic container ── */}
       <div
         id="main-content"
-        className="relative rounded-2xl lg:rounded-3xl overflow-hidden min-h-screen lg:min-h-[87vh] bg-navy-950"
+        className="relative rounded-2xl lg:rounded-3xl overflow-hidden min-h-screen lg:min-h-0 lg:aspect-video lg:max-h-[860px] bg-navy-950"
       >
 
         {/* ── 1. VIDEO — fills the entire container ── */}
@@ -109,6 +109,7 @@ export function Hero() {
             poster="/videos/PureLifeHeroPoster.jpg"
             src="/videos/PureLifeHeroVideo.mp4"
             className="w-full h-full object-cover block"
+            style={{ objectPosition: "center 35%" }}
           />
         </motion.div>
 
