@@ -91,27 +91,35 @@ export function Hero() {
         className="relative rounded-2xl lg:rounded-3xl overflow-hidden min-h-screen lg:min-h-0 lg:h-[760px] bg-navy-950"
       >
 
-        {/* ── 1. VIDEO — fills the entire container ── */}
-        <motion.div
+        {/* ── 1. VIDEO — fills container, shifted slightly right ── */}
+        <div
           className="absolute inset-0"
-          style={{ zIndex: 1 }}
-          initial={reduced ? {} : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.8, ease: "easeOut" }}
+          style={{
+            zIndex: 1,
+            transform: "scale(1.06) translateX(2.5%)",
+            transformOrigin: "50% 50%",
+          }}
           aria-hidden="true"
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster="/videos/PureLifeHeroPoster.jpg"
-            src="/videos/PureLifeHeroVideo.mp4"
-            className="w-full h-full object-cover block"
-            style={{ objectPosition: "center 40%" }}
-          />
-        </motion.div>
+          <motion.div
+            className="w-full h-full"
+            initial={reduced ? {} : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.8, ease: "easeOut" }}
+          >
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/videos/PureLifeHeroPoster.jpg"
+              src="/videos/PureLifeHeroVideo.mp4"
+              className="w-full h-full object-cover block"
+              style={{ objectPosition: "center 40%" }}
+            />
+          </motion.div>
+        </div>
 
         {/* ── 2. GRADIENT OVERLAYS ── */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }} aria-hidden="true">
