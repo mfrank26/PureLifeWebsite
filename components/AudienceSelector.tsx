@@ -132,52 +132,56 @@ function PathCard({ path, selected, dimmed, onSelect, reduced }: CardProps) {
   return (
     <motion.button
       onClick={onSelect}
-      className="group text-left w-full rounded-2xl p-6 focus:outline-none"
+      className="group relative text-left w-full rounded-2xl p-6 focus:outline-none"
       style={{
         background: selected ? "rgba(10,22,40,0.03)" : "#FFFFFF",
         border: selected ? "2px solid #0A1628" : "1px solid #E2E8F0",
         boxShadow: selected
-          ? "0 4px 20px rgba(10,22,40,0.1)"
+          ? "0 4px 24px rgba(10,22,40,0.12)"
           : "0 1px 4px rgba(0,0,0,0.05)",
-        transition: "box-shadow 0.2s ease, border-color 0.2s ease",
+        transition: "box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease",
       }}
       animate={{
-        opacity: dimmed ? 0.35 : 1,
-        scale: selected ? 1.01 : 1,
+        opacity: dimmed ? 0.38 : 1,
+        scale: selected ? 1.02 : 1,
       }}
-      whileHover={!selected && !dimmed ? { y: -3 } : {}}
+      whileHover={!selected && !dimmed ? { y: -6, scale: 1.01 } : {}}
       transition={
         reduced
           ? { duration: 0.1 }
-          : { duration: 0.2, ease: [0.34, 1.56, 0.64, 1] }
+          : {
+              opacity: { duration: 0.22, ease: "easeOut" },
+              scale: { type: "spring", stiffness: 500, damping: 28 },
+              y: { type: "spring", stiffness: 600, damping: 26 },
+            }
       }
       aria-pressed={selected}
       aria-label={`Select: ${path.title}`}
     >
-      {/* Icon */}
+      {/* Icon chip */}
       <div
         className="mb-4 w-10 h-10 rounded-xl flex items-center justify-center"
         style={{
           background: selected ? "rgba(10,22,40,0.08)" : "#F1F5F9",
-          transition: "background 0.2s ease",
+          transition: "background 0.25s ease",
         }}
       >
         <Icon
           className="w-5 h-5"
           style={{
             color: selected ? "#0A1628" : "#64748B",
-            transition: "color 0.2s ease",
+            transition: "color 0.25s ease",
           }}
           aria-hidden="true"
         />
       </div>
 
-      {/* Text */}
+      {/* Title + description */}
       <p
         className="font-ui font-semibold text-[15px] leading-snug mb-1.5"
         style={{
           color: selected ? "#0A1628" : "#1E293B",
-          transition: "color 0.2s ease",
+          transition: "color 0.25s ease",
         }}
       >
         {path.title}
@@ -186,16 +190,23 @@ function PathCard({ path, selected, dimmed, onSelect, reduced }: CardProps) {
         {path.description}
       </p>
 
-      {/* Selected indicator */}
-      {selected && (
-        <motion.div
-          className="absolute top-3 right-3 w-2 h-2 rounded-full bg-emerald-500"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.2, ease: [0.34, 1.56, 0.64, 1] }}
-          aria-hidden="true"
-        />
-      )}
+      {/* Selected indicator dot */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            className="absolute top-3 right-3 w-2 h-2 rounded-full bg-emerald-500"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={
+              reduced
+                ? { duration: 0.1 }
+                : { type: "spring", stiffness: 800, damping: 20 }
+            }
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
     </motion.button>
   );
 }
@@ -203,57 +214,95 @@ function PathCard({ path, selected, dimmed, onSelect, reduced }: CardProps) {
 /* ── Personalized Strip ────────────────────────────────────────────── */
 
 function PersonalizedStrip({ path }: { path: AudiencePath }) {
+  const Icon = path.icon;
+
   return (
+    /* Height wrapper — smooth layout shift */
     <motion.div
       key={path.id}
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "auto" }}
-      exit={{ opacity: 0, height: 0 }}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       className="overflow-hidden"
-      role="region"
-      aria-live="polite"
-      aria-label={`Personalized guidance for: ${path.title}`}
     >
-      <div
-        className="mt-4 rounded-2xl p-6 sm:p-8"
-        style={{
-          background: "#EFF6FF",
-          border: "1px solid #BFDBFE",
-        }}
+      {/* Spring inner — slides up as the layout opens */}
+      <motion.div
+        initial={{ y: 22 }}
+        animate={{ y: 0 }}
+        exit={{ y: -10, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 380, damping: 28, delay: 0.06 }}
       >
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
-          <div className="flex-1 max-w-lg">
-            <p
-              className="font-ui text-xs font-semibold uppercase tracking-[0.08em] mb-2"
-              style={{ color: "#0891B2" }}
-            >
-              For you
-            </p>
-            <p className="font-sans text-[15px] leading-relaxed" style={{ color: "#334155" }}>
-              {path.personalizedMessage}
-            </p>
-            <Link
-              href={path.recommendedLink.href}
-              className="inline-flex items-center gap-1.5 mt-3 font-ui text-sm font-medium transition-colors group"
-              style={{ color: "#1E3A5F" }}
-            >
-              {path.recommendedLink.label}
-              <ArrowRight
-                className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"
-                style={{ color: "#1E3A5F" }}
-              />
-            </Link>
+        <div
+          className="mt-6 rounded-2xl relative overflow-hidden"
+          style={{
+            background: "linear-gradient(135deg, #EFF6FF 0%, #F0F9FF 55%, #EFF6FF 100%)",
+            border: "1px solid #BFDBFE",
+            boxShadow: "0 4px 28px rgba(10,22,40,0.07)",
+          }}
+          role="region"
+          aria-live="polite"
+          aria-label={`Personalized guidance for: ${path.title}`}
+        >
+          {/* Large ghosted background icon */}
+          <div
+            className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none select-none"
+            aria-hidden="true"
+          >
+            <Icon
+              className="w-32 h-32"
+              style={{ color: "#0A1628", opacity: 0.04 }}
+            />
           </div>
 
-          <div className="flex-shrink-0">
-            <Link href={path.ctaHref} className="btn-emerald text-sm px-5">
-              {path.ctaLabel}
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+          {/* Content */}
+          <div className="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-start gap-5">
+            {/* Icon container */}
+            <div
+              className="flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center"
+              style={{ background: "rgba(10,22,40,0.08)" }}
+            >
+              <Icon
+                className="w-6 h-6"
+                style={{ color: "#0A1628" }}
+                aria-hidden="true"
+              />
+            </div>
+
+            {/* Message */}
+            <div className="flex-1 min-w-0">
+              <p
+                className="font-ui text-[11px] font-semibold uppercase tracking-[0.08em] mb-2"
+                style={{ color: "#0891B2" }}
+              >
+                For you
+              </p>
+              <p className="font-sans text-[15px] leading-relaxed max-w-lg" style={{ color: "#334155" }}>
+                {path.personalizedMessage}
+              </p>
+              <Link
+                href={path.recommendedLink.href}
+                className="inline-flex items-center gap-1.5 mt-3 font-ui text-[13px] font-medium group/link"
+                style={{ color: "#1E3A5F" }}
+              >
+                {path.recommendedLink.label}
+                <ArrowRight
+                  className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform"
+                  aria-hidden="true"
+                />
+              </Link>
+            </div>
+
+            {/* CTA */}
+            <div className="flex-shrink-0 sm:self-center">
+              <Link href={path.ctaHref} className="btn-emerald text-sm px-5">
+                {path.ctaLabel}
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
@@ -267,15 +316,18 @@ export function AudienceSelector() {
   const selectedPath = paths.find((p) => p.id === selected) ?? null;
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 28 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        duration: reduced ? 0.2 : 0.5,
-        delay: reduced ? 0 : i * 0.07,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
+      transition: reduced
+        ? { duration: 0.15 }
+        : {
+            type: "spring" as const,
+            stiffness: 260,
+            damping: 22,
+            delay: i * 0.07,
+          },
     }),
   };
 
@@ -329,7 +381,9 @@ export function AudienceSelector() {
 
         {/* Personalized strip */}
         <AnimatePresence mode="wait">
-          {selectedPath && <PersonalizedStrip key={selectedPath.id} path={selectedPath} />}
+          {selectedPath && (
+            <PersonalizedStrip key={selectedPath.id} path={selectedPath} />
+          )}
         </AnimatePresence>
       </div>
     </section>

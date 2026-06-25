@@ -23,189 +23,166 @@ const fadeIn = (delay = 0, duration = 0.6) => ({
   },
 });
 
-/* ── Background ────────────────────────────────────────────────────── */
+/* ── Brand Background ─────────────────────────────────────────────────
+   Every element is derived from the Pure Life logo:
+   • Heart glow   → the cyan gradient heart at the logo's center
+   • Wing arcs    → the silver eagle wings spreading outward
+   • Wing root    → the glowing origin point where wings meet the heart
+   • Rim light    → the boundary between the brand world and the viewer
+─────────────────────────────────────────────────────────────────────── */
 
-const particles = [
-  { x: "12%", y: "28%", size: 2,   opacity: 0.11, dur: 44, dx: 18,  dy: -12 },
-  { x: "78%", y: "18%", size: 2.5, opacity: 0.07, dur: 58, dx: -14, dy: 20  },
-  { x: "35%", y: "72%", size: 2,   opacity: 0.09, dur: 50, dx: 22,  dy: -8  },
-  { x: "88%", y: "65%", size: 2.5, opacity: 0.06, dur: 38, dx: -10, dy: -16 },
-  { x: "55%", y: "42%", size: 2,   opacity: 0.08, dur: 62, dx: -20, dy: 14  },
-  { x: "22%", y: "58%", size: 3,   opacity: 0.06, dur: 46, dx: 15,  dy: 20  },
-];
-
-function HeroBackground({ reduced }: { reduced: boolean }) {
+function BrandBackground({ reduced }: { reduced: boolean }) {
   return (
     <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-      {/* Subtle dot grid */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(168,178,188,0.045) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
 
-      {/* Cyan ambient glow — upper right */}
+      {/* Navy atmosphere — lower left */}
+      <div style={{
+        position: "absolute",
+        bottom: "-20%", left: "-15%",
+        width: "clamp(500px,60vw,820px)",
+        height: "clamp(500px,60vw,820px)",
+        borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(22,72,140,0.28) 0%, transparent 65%)",
+      }} />
+
+      {/* ── HEART GLOW — upper right, echoes the logo's cyan heart ── */}
       <motion.div
-        className="absolute rounded-full pointer-events-none"
         style={{
-          top: "-15%",
-          right: "-10%",
-          width: "clamp(420px, 52vw, 660px)",
-          height: "clamp(420px, 52vw, 660px)",
-          background:
-            "radial-gradient(circle, rgba(43,200,232,0.13) 0%, rgba(43,200,232,0.04) 50%, transparent 70%)",
+          position: "absolute",
+          top: "-8%", right: "3%",
+          width: "clamp(340px,43vw,600px)",
+          height: "clamp(340px,43vw,600px)",
         }}
         initial={{ opacity: 0 }}
-        animate={
-          reduced
-            ? { opacity: 1 }
-            : {
-                opacity: [0.7, 1, 0.8, 1, 0.7],
-                x: [0, 18, -10, 12, 0],
-                y: [0, -14, 8, -6, 0],
-              }
+        animate={reduced
+          ? { opacity: 0.85 }
+          : { opacity: [0.6, 0.95, 0.68, 0.92, 0.6] }
         }
-        transition={
-          reduced
-            ? { duration: 0.8, ease: "easeOut" }
-            : {
-                opacity: { duration: 0.8, ease: "easeOut" },
-                x: { duration: 55, repeat: Infinity, ease: "linear" },
-                y: { duration: 55, repeat: Infinity, ease: "linear" },
-              }
+        transition={reduced
+          ? { duration: 1.2, ease: "easeOut" }
+          : { duration: 9, repeat: Infinity, ease: "easeInOut" }
         }
-      />
+      >
+        {/* Left lobe */}
+        <div style={{
+          position: "absolute",
+          width: "54%", height: "57%",
+          top: "8%", left: "3%",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(43,200,232,0.24) 0%, rgba(43,200,232,0.08) 45%, transparent 70%)",
+          filter: "blur(32px)",
+        }} />
+        {/* Right lobe */}
+        <div style={{
+          position: "absolute",
+          width: "54%", height: "57%",
+          top: "8%", right: "3%",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(43,200,232,0.24) 0%, rgba(43,200,232,0.08) 45%, transparent 70%)",
+          filter: "blur(32px)",
+        }} />
+        {/* Bottom tip — elongated downward */}
+        <div style={{
+          position: "absolute",
+          width: "34%", height: "52%",
+          bottom: "2%",
+          left: "50%", transform: "translateX(-50%)",
+          borderRadius: "0 0 50% 50%",
+          background: "radial-gradient(ellipse at top, rgba(43,200,232,0.14) 0%, transparent 68%)",
+          filter: "blur(26px)",
+        }} />
+      </motion.div>
 
-      {/* Second ambient glow — lower center */}
+      {/* ── SILVER WINGS — large, sweeping, echoes the eagle wings ── */}
+
+      {/* Left wing */}
       <motion.div
-        className="absolute rounded-full pointer-events-none"
         style={{
-          bottom: "-10%",
-          left: "30%",
-          width: "clamp(300px, 36vw, 480px)",
-          height: "clamp(300px, 36vw, 480px)",
-          background: "radial-gradient(circle, rgba(43,200,232,0.05) 0%, transparent 65%)",
-        }}
-        initial={{ opacity: 0 }}
-        animate={reduced ? { opacity: 1 } : { opacity: [0.5, 0.9, 0.5], x: [0, -20, 0], y: [0, 10, 0] }}
-        transition={
-          reduced ? { duration: 0.8 } : { duration: 40, repeat: Infinity, ease: "linear" }
-        }
-      />
-
-      {/* Navy depth — lower left */}
-      <div
-        className="absolute rounded-full pointer-events-none"
-        style={{
-          bottom: "-20%",
-          left: "-15%",
-          width: "clamp(500px, 60vw, 800px)",
-          height: "clamp(500px, 60vw, 800px)",
-          background: "radial-gradient(circle, rgba(27,82,152,0.22) 0%, transparent 65%)",
-        }}
-      />
-
-      {/* Silver wing — left arc */}
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          bottom: "-8%",
-          left: "50%",
-          width: "clamp(300px, 44vw, 580px)",
-          height: "clamp(320px, 60vh, 640px)",
+          position: "absolute",
+          bottom: "-6%", left: "-18%",
+          width: "72vw", height: "76vh",
+          background: "linear-gradient(142deg, transparent 18%, rgba(215,222,230,0.10) 48%, rgba(170,180,190,0.07) 66%, rgba(200,210,220,0.04) 80%, transparent 91%)",
+          borderRadius: "0 78% 58% 0 / 0 52% 78% 0",
+          filter: "blur(42px)",
           transformOrigin: "bottom right",
-          transform: "translateX(-100%) rotate(-12deg)",
-          background:
-            "linear-gradient(to top right, rgba(168,178,188,0.10) 0%, rgba(168,178,188,0.04) 45%, transparent 70%)",
-          borderRadius: "0 60% 0 0",
-          filter: "blur(32px)",
+          transform: "rotate(-23deg)",
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.4, delay: 0.3, ease: "easeOut" }}
+        transition={{ duration: 2.2, delay: 0.5, ease: "easeOut" }}
       />
 
-      {/* Silver wing — right arc */}
+      {/* Right wing */}
       <motion.div
-        className="absolute pointer-events-none"
         style={{
-          bottom: "-8%",
-          right: "50%",
-          width: "clamp(300px, 44vw, 580px)",
-          height: "clamp(320px, 60vh, 640px)",
+          position: "absolute",
+          bottom: "-6%", right: "-18%",
+          width: "72vw", height: "76vh",
+          background: "linear-gradient(218deg, transparent 18%, rgba(215,222,230,0.10) 48%, rgba(170,180,190,0.07) 66%, rgba(200,210,220,0.04) 80%, transparent 91%)",
+          borderRadius: "78% 0 0 58% / 52% 0 0 78%",
+          filter: "blur(42px)",
           transformOrigin: "bottom left",
-          transform: "translateX(100%) rotate(12deg)",
-          background:
-            "linear-gradient(to top left, rgba(168,178,188,0.10) 0%, rgba(168,178,188,0.04) 45%, transparent 70%)",
-          borderRadius: "60% 0 0 0",
-          filter: "blur(32px)",
+          transform: "rotate(23deg)",
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.4, delay: 0.3, ease: "easeOut" }}
+        transition={{ duration: 2.2, delay: 0.5, ease: "easeOut" }}
       />
 
-      {/* Center lift */}
+      {/* Wing root — where the wings meet the heart */}
+      <div style={{
+        position: "absolute",
+        bottom: "-4%",
+        left: "50%", transform: "translateX(-50%)",
+        width: "clamp(220px,28vw,440px)",
+        height: "clamp(200px,26vh,360px)",
+        background: "radial-gradient(ellipse, rgba(170,182,194,0.10) 0%, transparent 68%)",
+        filter: "blur(28px)",
+      }} />
+
+      {/* Rim light — vertical boundary between copy and video, desktop only */}
       <div
-        className="absolute pointer-events-none"
+        className="hidden lg:block"
         style={{
-          bottom: "0",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "clamp(200px, 30vw, 400px)",
-          height: "clamp(200px, 30vh, 320px)",
-          background: "radial-gradient(ellipse, rgba(168,178,188,0.06) 0%, transparent 70%)",
-          filter: "blur(24px)",
+          position: "absolute",
+          top: "6%", bottom: "6%",
+          left: "44%",
+          width: "170px",
+          background: "radial-gradient(ellipse at center, rgba(43,200,232,0.11) 0%, transparent 70%)",
+          filter: "blur(22px)",
         }}
       />
 
-      {/* Floating particles */}
-      {!reduced &&
-        particles.map((p, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full pointer-events-none"
-            style={{
-              left: p.x,
-              top: p.y,
-              width: p.size,
-              height: p.size,
-              background: "#2BC8E8",
-              opacity: p.opacity,
-            }}
-            animate={{ x: [0, p.dx, 0], y: [0, p.dy, 0] }}
-            transition={{ duration: p.dur, repeat: Infinity, ease: "linear", delay: i * 3.5 }}
-          />
-        ))}
     </div>
   );
 }
 
-/* ── Hero Video ─────────────────────────────────────────────────────── */
+/* ── Hero Video — Desktop ──────────────────────────────────────────────
+   Absolute-positioned, fills the right 58% of the hero.
+   No card. No rounded container. No border.
+   Left edge fades into the brand background via CSS mask gradient.
+   The video IS the visual — the brand world is built around it.
+─────────────────────────────────────────────────────────────────────── */
 
-function HeroVideo({ reduced }: { reduced: boolean }) {
+function HeroVideoDesktop({ reduced }: { reduced: boolean }) {
   return (
     <motion.div
-      className="w-full"
-      initial={reduced ? false : { opacity: 0, x: 48 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.85, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      className="absolute right-0 top-0 bottom-0 hidden lg:block pointer-events-none"
+      style={{ width: "58%", zIndex: 10 }}
+      initial={reduced ? false : { opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.6, delay: 0.4, ease: "easeOut" }}
     >
-      {/* Premium container — rounded, deep shadow, glass border */}
+      {/* Mask wrapper: left edge gradient blend into brand background */}
       <div
-        className="relative rounded-2xl overflow-hidden"
+        className="w-full h-full"
         style={{
-          aspectRatio: "16 / 9",
-          boxShadow: [
-            "0 40px 100px rgba(4,16,31,0.65)",
-            "0 16px 48px rgba(4,16,31,0.45)",
-            "0 0 0 1px rgba(255,255,255,0.1)",
-          ].join(", "),
+          maskImage:
+            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 6%, rgba(0,0,0,0.80) 18%, black 30%, black 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.35) 6%, rgba(0,0,0,0.80) 18%, black 30%, black 100%)",
         }}
       >
-        {/* Video — autoplay, muted, loop, playsInline for mobile */}
         <video
           autoPlay
           muted
@@ -215,19 +192,56 @@ function HeroVideo({ reduced }: { reduced: boolean }) {
           src="/videos/PureLifeHeroVideo.mp4"
           className="w-full h-full object-cover block"
         />
+      </div>
 
-        {/* Glass border overlay */}
-        <div
-          className="absolute inset-0 rounded-2xl pointer-events-none"
-          style={{ border: "1px solid rgba(255,255,255,0.12)", zIndex: 10 }}
-          aria-hidden="true"
+      {/* Bottom gradient — fades video into the dark hero floor */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent 52%, rgba(4,16,31,0.38) 100%)",
+          zIndex: 5,
+        }}
+        aria-hidden="true"
+      />
+    </motion.div>
+  );
+}
+
+/* ── Hero Video — Mobile ──────────────────────────────────────────────
+   In-flow below the copy. Premium card with shadow and border.
+─────────────────────────────────────────────────────────────────────── */
+
+function HeroVideoMobile({ reduced }: { reduced: boolean }) {
+  return (
+    <motion.div
+      className="w-full mt-10"
+      initial={reduced ? false : { opacity: 0, y: 28 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: "spring", stiffness: 260, damping: 28, delay: 0.4 }}
+    >
+      <div
+        className="relative rounded-2xl overflow-hidden"
+        style={{
+          aspectRatio: "16 / 9",
+          boxShadow:
+            "0 32px 72px rgba(4,16,31,0.65), 0 8px 24px rgba(4,16,31,0.40), 0 0 0 1px rgba(255,255,255,0.08)",
+        }}
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          src="/videos/PureLifeHeroVideo.mp4"
+          className="w-full h-full object-cover block"
         />
-
-        {/* Subtle bottom gradient for visual continuity with dark hero */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "linear-gradient(to bottom, transparent 55%, rgba(4,16,31,0.2) 100%)",
+            background:
+              "linear-gradient(to bottom, transparent 58%, rgba(4,16,31,0.28) 100%)",
             zIndex: 5,
           }}
           aria-hidden="true"
@@ -237,7 +251,7 @@ function HeroVideo({ reduced }: { reduced: boolean }) {
   );
 }
 
-/* ── Hero ──────────────────────────────────────────────────────────── */
+/* ── Hero ────────────────────────────────────────────────────────────── */
 
 export function Hero() {
   const reduced = useReducedMotion() ?? false;
@@ -245,28 +259,30 @@ export function Hero() {
   return (
     <section
       id="main-content"
-      className="relative min-h-screen flex items-center bg-navy-950 overflow-hidden"
+      className="relative min-h-screen bg-navy-950 overflow-hidden"
       aria-labelledby="hero-headline"
     >
-      <HeroBackground reduced={reduced} />
+      <BrandBackground reduced={reduced} />
+      <HeroVideoDesktop reduced={reduced} />
 
-      {/* Two-column layout: copy left, video right */}
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 pt-28 pb-14 lg:py-0 flex flex-col lg:flex-row lg:items-center lg:gap-8 xl:gap-14">
+      {/* Content — sits above the video */}
+      <div className="relative z-20 w-full max-w-[1280px] mx-auto px-6 flex flex-col justify-start lg:justify-center min-h-screen pt-28 pb-16 lg:pt-0 lg:pb-0">
 
-        {/* Left — copy */}
-        <div className="flex-1 lg:max-w-[52%]">
+        {/* Copy panel — left 49% on desktop, full-width on mobile */}
+        <div className="w-full lg:w-[49%]">
           <motion.div
             className="glass-panel-hero rounded-2xl p-8 sm:p-12 lg:p-14"
+            style={{ background: "rgba(4,16,31,0.48)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
           >
             {/* WHO badge */}
             <motion.div
               className="inline-flex items-center gap-2 rounded-full mb-6 px-4 py-1.5"
               style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.12)",
               }}
               variants={fadeIn(0.15, 0.5)}
               initial="hidden"
@@ -330,14 +346,14 @@ export function Hero() {
               <span className="text-white/20 hidden sm:block">·</span>
               <TrustItem icon={null} text="50+ carriers compared" />
               <span className="text-white/20 hidden sm:block">·</span>
-              <TrustItem icon={null} text="Agent answers in < 30 seconds" />
+              <TrustItem icon={null} text="Agent answers in &lt; 30 seconds" />
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Right — video (all screen sizes) */}
-        <div className="flex flex-1 items-center justify-center mt-10 lg:mt-0">
-          <HeroVideo reduced={reduced} />
+        {/* Mobile video — below copy, only on mobile */}
+        <div className="lg:hidden">
+          <HeroVideoMobile reduced={reduced} />
         </div>
       </div>
 
