@@ -88,7 +88,7 @@ export function Hero() {
       {/* ── Cinematic container ── */}
       <div
         id="main-content"
-        className="relative rounded-2xl lg:rounded-3xl overflow-hidden min-h-screen lg:min-h-0 lg:aspect-video lg:max-h-[860px] bg-navy-950"
+        className="relative rounded-2xl lg:rounded-3xl overflow-hidden min-h-screen lg:min-h-0 lg:h-[760px] bg-navy-950"
       >
 
         {/* ── 1. VIDEO — fills the entire container ── */}
@@ -109,31 +109,36 @@ export function Hero() {
             poster="/videos/PureLifeHeroPoster.jpg"
             src="/videos/PureLifeHeroVideo.mp4"
             className="w-full h-full object-cover block"
-            style={{ objectPosition: "center 35%" }}
+            style={{ objectPosition: "center 40%" }}
           />
         </motion.div>
 
         {/* ── 2. GRADIENT OVERLAYS ── */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }} aria-hidden="true">
-          {/* Mobile: flat dark overlay — full readability */}
+          {/* Mobile: flat dark overlay */}
           <div
             className="absolute inset-0 lg:hidden"
             style={{ background: "rgba(4,16,31,0.52)" }}
           />
-          {/* Desktop: left-heavy gradient — copy left, faces right */}
+          {/* Desktop: left panel scrim, fades quickly past the panel edge (~42%) */}
           <div
             className="absolute inset-0 hidden lg:block"
-            style={{ background: "linear-gradient(to right, rgba(4,16,31,0.88) 0%, rgba(4,16,31,0.60) 36%, rgba(4,16,31,0.22) 60%, rgba(4,16,31,0.04) 100%)" }}
+            style={{ background: "linear-gradient(to right, rgba(4,16,31,0.86) 0%, rgba(4,16,31,0.55) 30%, rgba(4,16,31,0.18) 48%, rgba(4,16,31,0.03) 70%, transparent 100%)" }}
           />
-          {/* Top vignette — behind the nav bar */}
+          {/* Top vignette — nav area */}
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(4,16,31,0.55) 0%, transparent 28%)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(4,16,31,0.55) 0%, transparent 26%)" }}
           />
-          {/* Bottom vignette — depth and trust card readability */}
+          {/* Bottom vignette */}
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to top, rgba(4,16,31,0.70) 0%, transparent 55%)" }}
+            style={{ background: "linear-gradient(to top, rgba(4,16,31,0.65) 0%, transparent 52%)" }}
+          />
+          {/* Soft radial edge vignette — cinematic focus on the centre */}
+          <div
+            className="absolute inset-0"
+            style={{ background: "radial-gradient(ellipse 80% 85% at 58% 46%, transparent 38%, rgba(4,16,31,0.50) 100%)" }}
           />
         </div>
 
@@ -151,9 +156,9 @@ export function Hero() {
           style={{ paddingTop: "96px", paddingBottom: "64px" }}
         >
           {/* Copy panel — constrained left on desktop, full-width on mobile */}
-          <div className="w-full lg:w-auto lg:max-w-[min(564px,50%)]">
+          <div className="w-full lg:w-auto lg:max-w-[min(480px,40%)]">
             <motion.div
-              className="glass-panel-hero rounded-2xl p-8 sm:p-10 lg:p-12"
+              className="glass-panel-hero rounded-2xl p-7 sm:p-9 lg:p-10"
               style={{
                 background: "rgba(4,16,31,0.62)",
                 border: "1px solid rgba(255,255,255,0.13)",
