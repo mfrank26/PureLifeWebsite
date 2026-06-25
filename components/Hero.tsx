@@ -88,7 +88,7 @@ export function Hero() {
       {/* ── Cinematic container ── */}
       <div
         id="main-content"
-        className="relative rounded-2xl lg:rounded-3xl overflow-hidden min-h-screen bg-navy-950"
+        className="relative rounded-2xl lg:rounded-3xl overflow-hidden min-h-screen lg:min-h-[87vh] bg-navy-950"
       >
 
         {/* ── 1. VIDEO — fills the entire container ── */}
@@ -136,27 +136,11 @@ export function Hero() {
           />
         </div>
 
-        {/* ── 3. LOGO ARC LINES — barely-visible brand geometry ── */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 3 }} aria-hidden="true">
+        {/* ── 3. AMBIENT DEPTH — soft radial, no geometry ── */}
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 3 }} aria-hidden="true">
           <div style={{
-            position: "absolute",
-            top: "8%", left: "-8%",
-            width: "58vw", height: "52vh",
-            borderRadius: "0 90% 0 0",
-            border: "1px solid rgba(195,208,220,0.065)",
-            background: "transparent",
-            transformOrigin: "bottom right",
-            transform: "rotate(-14deg)",
-          }} />
-          <div style={{
-            position: "absolute",
-            top: "8%", right: "-8%",
-            width: "58vw", height: "52vh",
-            borderRadius: "90% 0 0 0",
-            border: "1px solid rgba(195,208,220,0.065)",
-            background: "transparent",
-            transformOrigin: "bottom left",
-            transform: "rotate(14deg)",
+            position: "absolute", inset: 0,
+            background: "radial-gradient(ellipse 55% 65% at 18% 50%, rgba(4,16,31,0.30) 0%, transparent 72%)",
           }} />
         </div>
 

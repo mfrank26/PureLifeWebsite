@@ -452,9 +452,18 @@ export function Navigation() {
       </a>
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "glass-nav" : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        style={{
+          background: scrolled ? "rgba(10,20,40,0.92)" : "rgba(4,16,31,0.30)",
+          backdropFilter: "blur(18px) saturate(180%)",
+          WebkitBackdropFilter: "blur(18px) saturate(180%)",
+          borderBottom: scrolled
+            ? "1px solid rgba(255,255,255,0.10)"
+            : "1px solid rgba(255,255,255,0.07)",
+          boxShadow: scrolled
+            ? "0 4px 32px rgba(4,16,31,0.55)"
+            : "0 2px 16px rgba(4,16,31,0.30)",
+        }}
       >
         <nav
           className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-[76px]"
